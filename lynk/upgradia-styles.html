@@ -1,0 +1,618 @@
+<!-- ══════════════════════════════════════════════════════════════
+  LP UPGRADIA STYLES v4 · VERSI LYNK.ID · SATU BLOK HTML
+  Dibuat Nolan dari lp-final/index.html (2026-11-17)
+
+  CARA PASANG (SOP bab 07):
+  1. Lynk → My Lynk → Landing Pages → buat halaman BARU (jangan ubah halaman aktif).
+  2. Komponen Custom HTML → tempel SELURUH isi file ini.
+  3. Tepat di BAWAH blok ini: komponen Checkout Form (judul "Form Pemesanan", produk Upgradia Styles,
+     tombol "Bayar Sekarang", padding ADVANCE 24/16/32/16).
+  4. Design tab: Background dan Page Background = #000000.
+  5. Klip & gambar diambil dari internet (jsDelivr + cadangan GitHub Pages), tidak perlu diunggah ke Lynk.
+  Harga jual hanya tampil sekali (kartu harga paling bawah). Tombol "Isi data & lanjut bayar" turun ke Checkout Form.
+═══════════════════════════════════════════════════════════════ -->
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+#ups{position:relative;isolation:isolate}
+#ups :where(h1,h2,h3,h4,p,li,ol,ul,span,b,strong,small,em,s,summary,label,figcaption,blockquote,header,main,section,div){color:inherit;font-family:inherit;text-transform:none;text-shadow:none}
+#ups :where(a,a:hover,a:visited,a:focus){color:inherit;text-decoration:none}
+#ups :where(img,video){border:0;box-shadow:none;max-width:100%}
+#ups :where(button){margin:0;text-transform:none;letter-spacing:normal}
+#ups{--bg:#000; --s1:#101010; --s2:#191919; --line:#303030;
+  --ink:#fff; --txt:#E5E5E5; --mut:#AFAFAF;
+  --red:#DF2438; --red2:#FF5866; --redp:#C51D30; --redd:#25090E;
+  --disp:"Baloo 2", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body:"Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme:dark;}
+#ups *{box-sizing:border-box}
+#ups [hidden]{display:none!important}
+#ups{-webkit-text-size-adjust:100%}
+#ups{margin:0;background:var(--bg);color:var(--txt);font:400 16px/1.6 var(--body)}
+#ups{background:var(--bg);color:var(--txt);font:400 16px/1.6 var(--body);overflow-x:clip}
+#ups img,#ups video{max-width:100%;display:block}
+#ups a{color:inherit}
+#ups button{font:inherit;color:inherit}
+#ups :focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:8px}
+#ups .wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 20px}
+#ups .narrow{max-width:760px}
+#ups section{position:relative;padding:56px 0;scroll-margin-top:12px}
+#ups h1,#ups h2,#ups h3{font-family:var(--disp);font-weight:800;color:var(--ink);margin:0;letter-spacing:-.01em;text-wrap:balance}
+#ups h1{font-size:clamp(40px,10.8vw,64px);line-height:1.04}
+#ups h2{font-size:clamp(30px,7.8vw,50px);line-height:1.08}
+#ups h3{font-size:20px;line-height:1.25}
+#ups p{margin:0}
+#ups .mut{color:var(--mut)}
+#ups .small{font-size:14px;line-height:1.5}
+#ups .label{display:inline-block;font:800 12px/1.3 var(--body);letter-spacing:.09em;text-transform:uppercase;color:var(--mut)}
+#ups .label.r{color:var(--red2)}
+#ups .sub{font-size:16px;color:var(--txt);max-width:56ch}
+#ups .hl{position:relative;display:inline-block;padding:0 .2em;margin:0 -.05em;color:#fff;isolation:isolate}
+#ups .hl::before{content:"";position:absolute;inset:.12em 0 .04em;background:var(--red);border-radius:8px;transform:rotate(-1.5deg);transform-origin:left center;z-index:-1}
+#ups .hl.sweep::before{animation:sweep .32s cubic-bezier(.3,.7,.2,1) .25s both}
+@keyframes sweep{from{transform:rotate(-1.5deg) scaleX(0)}to{transform:rotate(-1.5deg) scaleX(1)}}
+#ups .ul{background:linear-gradient(var(--red),var(--red)) left 94%/100% .11em no-repeat;padding-bottom:.04em}
+#ups .btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:54px;padding:14px 22px;border:0;border-radius:16px;background:var(--red);color:#fff;font:800 16px/1.2 var(--body);text-decoration:none;text-align:center;cursor:pointer;box-shadow:0 4px 0 #710E1C;transition:transform .14s,box-shadow .14s,background .14s}
+#ups .btn:hover{background:var(--redp)}
+#ups .btn:active{transform:translateY(2px);box-shadow:0 2px 0 #710E1C}
+#ups .btn2{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 20px;border-radius:14px;border:1.5px solid #4A4A4A;background:transparent;color:#fff;font:700 15px/1.2 var(--body);text-decoration:none;cursor:pointer;transition:border-color .14s,background .14s}
+#ups .btn2:hover{border-color:#fff;background:#0c0c0c}
+#ups .card{background:var(--s1);border:1px solid var(--line);border-radius:24px}
+#ups .ico{width:24px;height:24px;flex:none;fill:none;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+#ups .ico .r{stroke:var(--red2)}
+#ups .vid{position:absolute;inset:0;background:#141414;display:grid;place-items:center}
+#ups .vid>span{font:700 11px/1.4 var(--body);color:#6f6f6f;text-align:center;padding:10px}
+#ups .vid video,#ups .vid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#ups .head{padding:14px 0}
+#ups .head .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+#ups .logo{display:flex;align-items:center;gap:10px;font:800 21px/1 var(--disp);color:#fff;text-decoration:none}
+#ups .logo i{width:34px;height:26px;border-radius:9px;background:var(--red);display:grid;place-items:center}
+#ups .logo i::after{content:"";border-left:9px solid #fff;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:3px}
+#ups .headlink{font:700 15px/1 var(--body);color:#fff;text-decoration:none;padding:12px 4px}
+#ups .hero{padding-top:18px}
+#ups .hgrid{display:grid;gap:30px;align-items:center}
+#ups .htext{display:grid;gap:18px;min-width:0}
+#ups .htext .btn{max-width:440px}
+#ups .req{font-size:14px;line-height:1.55;color:var(--mut)}
+#ups .req b{color:var(--txt);font-weight:700}
+#ups .demo{padding:16px;display:grid;gap:14px;min-width:0;max-width:520px;width:100%;justify-self:center}
+#ups .dtop{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+#ups .dtop b{font:800 20px/1 var(--disp);color:#fff}
+#ups .pill{font:700 12px/1 var(--body);background:#fff;color:#000;padding:7px 11px;border-radius:999px}
+#ups .dbody{display:grid;grid-template-columns:minmax(0,42%) minmax(0,1fr);gap:14px;align-items:center}
+#ups .dvid{position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+#ups .dvid .raw{z-index:1;transition:opacity .35s}
+#ups .demo[data-stage="5"] .raw{opacity:0}
+#ups .tag{position:absolute;left:8px;top:8px;z-index:4;font:700 11px/1 var(--body);background:rgba(0,0,0,.72);color:#fff;padding:6px 8px;border-radius:8px}
+#ups .fx{position:absolute;left:8px;right:8px;top:36px;z-index:3;display:grid;gap:6px;justify-items:start}
+#ups .fx span{font:800 11px/1.1 var(--body);background:#fff;color:#000;padding:6px 8px;border-radius:8px;opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s}
+#ups .demo[data-stage="3"] .fx span{opacity:1;transform:none}
+#ups .demo[data-stage="3"] .fx span:nth-child(2){transition-delay:.4s}
+#ups .demo[data-stage="3"] .fx span:nth-child(3){transition-delay:.8s}
+#ups .rbar{position:absolute;left:8px;right:8px;bottom:8px;z-index:3;display:none;gap:6px;background:rgba(0,0,0,.82);border-radius:10px;padding:8px 9px;font:700 11.5px/1 var(--body);color:#fff}
+#ups .rbar i{display:block;height:6px;border-radius:3px;background:#3a3a3a;overflow:hidden}
+#ups .rbar em{display:block;height:100%;width:0;background:var(--red)}
+#ups .demo[data-stage="4"] .rbar{display:grid}
+#ups .demo[data-stage="4"] .rbar em{width:100%;transition:width 2s linear}
+#ups .done{position:absolute;left:8px;right:8px;bottom:8px;z-index:3;display:none;align-items:center;justify-content:center;gap:6px;font:800 12.5px/1 var(--body);background:#fff;color:#000;padding:8px;border-radius:10px}
+#ups .demo[data-stage="5"] .done{display:flex}
+#ups .done i{width:16px;height:16px;border-radius:50%;background:var(--red);display:grid;place-items:center;color:#fff;font-style:normal;font-size:10px}
+#ups .dsteps{list-style:none;margin:0;padding:0;display:grid;gap:10px;min-width:0}
+#ups .dsteps li{display:grid;grid-template-columns:22px minmax(0,1fr);column-gap:9px;opacity:.4;transition:opacity .25s}
+#ups .dsteps li::before{content:"";grid-row:1/3;width:22px;height:22px;border-radius:50%;border:2px solid #555;box-sizing:border-box;display:grid;place-items:center;font:800 11px/1 var(--body);color:#fff}
+#ups .dsteps li>*{grid-column:2}
+#ups .dsteps b{font:800 14px/1.25 var(--body);color:#fff}
+#ups .dsteps small{font-size:12px;line-height:1.3;color:var(--mut)}
+#ups .dsteps li.on,#ups .dsteps li.ok{opacity:1}
+#ups .dsteps li.on::before{border-color:var(--red);box-shadow:inset 0 0 0 4px var(--s1),inset 0 0 0 10px var(--red)}
+#ups .dsteps li.ok::before{content:"✓";background:var(--red);border-color:var(--red)}
+#ups .sub .w{color:#fff;font-weight:800}
+#ups .ps{margin-top:20px;padding:4px 18px}
+#ups .pr{display:grid;gap:6px;padding:16px 0;border-bottom:1px solid var(--line)}
+#ups .pr:last-child{border-bottom:0}
+#ups .pp,#ups .pa{display:flex;gap:10px;align-items:flex-start;line-height:1.45}
+#ups .pp{font-size:15px;color:var(--mut)}
+#ups .pa{font-size:15.5px;font-weight:700;color:#fff}
+#ups .pp::before,#ups .pa::before{flex:none;width:22px;height:22px;margin-top:1px;border-radius:50%;display:grid;place-items:center;font:800 12px/1 var(--body)}
+#ups .pp::before{content:"✕";border:1.5px solid #555;color:#8a8a8a}
+#ups .pa::before{content:"✓";background:var(--red);color:#fff}
+#ups .shead{display:grid;gap:12px;margin-bottom:22px}
+#ups .gal{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 12px}
+#ups .gitem{width:calc(50% - 6px);display:grid;gap:8px;min-width:0}
+#ups .tile{position:relative;display:block;width:100%;aspect-ratio:9/16;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#141414;padding:0;cursor:pointer}
+#ups .play{position:absolute;left:50%;top:50%;z-index:2;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:rgba(0,0,0,.55);border:2px solid #fff;display:grid;place-items:center;transition:opacity .18s,transform .18s}
+#ups .play::after{content:"";border-left:15px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px}
+#ups .tile.playing .play{opacity:0;transform:scale(.8)}
+#ups .tile .tag{top:10px;left:10px}
+#ups .gname{display:grid;gap:1px;padding:0 2px}
+#ups .gname b{font:800 17px/1.2 var(--disp);color:#fff}
+#ups .gname small{font-size:13px;line-height:1.35;color:var(--mut)}
+#ups .after{margin-top:26px;display:flex;justify-content:center}
+#ups .rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 14px;scrollbar-width:thin;scrollbar-color:#333 transparent;-webkit-overflow-scrolling:touch}
+#ups .rail>*{scroll-snap-align:start;flex:none;width:min(44vw,210px)}
+#ups .slot{aspect-ratio:9/16;border-radius:18px;border:1.5px dashed #444;display:grid;place-items:center;align-content:center;gap:10px;text-align:center;padding:14px;color:var(--mut);background:repeating-linear-gradient(135deg,#0a0a0a 0 10px,#0e0e0e 10px 20px)}
+#ups .slot i{width:44px;height:44px;border-radius:50%;border:1.5px solid #555;display:grid;place-items:center;font:700 24px/1 var(--body);font-style:normal;color:#fff}
+#ups .slot b{font:800 16px/1.2 var(--disp);color:#fff}
+#ups .slot small{font-size:12.5px;line-height:1.35}
+#ups .railnote{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mut);margin-top:6px}
+#ups .bridge{font:800 clamp(24px,6vw,34px)/1.2 var(--disp);color:#fff;max-width:24ch;margin-bottom:34px}
+#ups .bridge span{color:var(--red2)}
+#ups .steps{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:0}
+#ups .steps li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;padding:16px 0;border-top:1px solid var(--line)}
+#ups .steps li:last-child{border-bottom:1px solid var(--line)}
+#ups .steps .n{font:800 30px/1 var(--disp);color:var(--red2);padding-top:2px}
+#ups .steps p{color:var(--mut);font-size:15px;margin-top:4px}
+#ups .engine{margin-top:16px;font-size:14px}
+#ups .engine b{color:#fff}
+#ups .duo{display:grid;gap:12px;margin-top:20px}
+#ups .person{padding:20px;display:grid;gap:14px}
+#ups .mtop{display:flex;align-items:center;gap:14px}
+#ups .portrait{position:relative;width:64px;height:64px;flex:none;border-radius:20px;overflow:hidden;border:2px solid var(--red);background:var(--s2);display:grid;place-items:center;font:800 28px/1 var(--disp);color:#fff}
+#ups .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+#ups .who{font:600 13.5px/1.4 var(--body);color:var(--mut)}
+#ups .who b{display:block;font:800 20px/1.2 var(--disp);color:#fff}
+#ups .quote{font:700 clamp(19px,4.8vw,23px)/1.4 var(--disp);color:#fff;margin:0;padding-left:14px;border-left:4px solid var(--red)}
+#ups .need{display:grid;gap:0;padding:6px 18px;margin-top:20px}
+#ups .need div{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line)}
+#ups .need div:last-child{border-bottom:0}
+#ups .need b{display:block;color:#fff;font-weight:700}
+#ups .need span{font-size:14.5px;color:var(--mut);line-height:1.45}
+#ups .needtxt{margin-top:14px;font-size:14.5px;color:var(--mut)}
+#ups .guar{display:flex;gap:14px;align-items:center;padding:16px 18px;margin-top:14px;border-color:#5a1a24;background:linear-gradient(135deg,var(--redd),var(--s1) 70%)}
+#ups .seal{width:56px;height:56px;flex:none;border-radius:50%;background:var(--red);display:grid;place-items:center}
+#ups .seal .ico{stroke:#fff;width:28px;height:28px}
+#ups .guar p{font-size:14.5px;line-height:1.5}
+#ups .guar b{color:#fff}
+#ups .faqh{margin:40px 0 14px;font-size:26px}
+#ups .faq{display:grid;gap:10px}
+#ups .faq details{background:var(--s1);border:1px solid var(--line);border-radius:18px;padding:0 18px}
+#ups .faq summary{list-style:none;cursor:pointer;font:700 16px/1.4 var(--body);color:#fff;padding:16px 30px 16px 0;position:relative}
+#ups .faq summary::-webkit-details-marker{display:none}
+#ups .faq summary::after{content:"+";position:absolute;right:0;top:12px;font:700 24px/1 var(--body);color:var(--red2)}
+#ups .faq details[open] summary::after{content:"–"}
+#ups .faq details p{font-size:15px;color:var(--mut);padding:0 0 16px}
+#ups .ask{margin-top:16px}
+#ups .paket .wrap{display:grid;gap:18px}
+#ups .olist{padding:6px 0}
+#ups .orow{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding:16px 18px;border-bottom:1px solid var(--line)}
+#ups .orow:last-child{border-bottom:0}
+#ups .oico{width:44px;height:44px;border-radius:14px;background:var(--s2);border:1px solid var(--line);display:grid;place-items:center}
+#ups .otop{display:flex;align-items:baseline;justify-content:space-between;gap:6px 12px;flex-wrap:wrap}
+#ups .otop h3{font-size:19px}
+#ups .otag{font:800 10.5px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:6px;display:block}
+#ups .otag.bonus{color:var(--red2)}
+#ups .orow p{font-size:14.5px;color:var(--mut);margin-top:4px;line-height:1.5}
+#ups .oval{font:700 14px/1.2 var(--body);color:var(--mut);white-space:nowrap;font-variant-numeric:tabular-nums}
+#ups .oval b{color:#fff;font-weight:800}
+#ups .ucard{position:relative;padding:28px 20px 22px;border-color:#4a1520;overflow:hidden;display:grid;gap:16px}
+#ups .ucard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--red)}
+#ups .utab{justify-self:start;font:800 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;background:var(--red);color:#fff;padding:8px 12px;border-radius:999px}
+#ups .ucard>p{font-size:16px;color:var(--txt)}
+#ups .utiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+#ups .ut{display:grid;gap:4px;align-content:start;min-width:0}
+#ups .uimg{position:relative;aspect-ratio:9/14;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--s2);margin-bottom:6px}
+#ups .uimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#ups .uimg i{position:absolute;right:6px;top:6px;z-index:3;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font:800 17px/1 var(--body);font-style:normal;box-shadow:0 2px 8px rgba(0,0,0,.5)}
+#ups .uimg.ref{background:#151515}
+#ups .uimg.ref img{width:58%;height:auto;aspect-ratio:9/16;inset:auto;border-radius:8px;border:2px solid #fff;box-shadow:0 6px 14px rgba(0,0,0,.5)}
+#ups .uimg.ref img:nth-of-type(1){left:6%;top:12%;transform:rotate(-9deg)}
+#ups .uimg.ref img:nth-of-type(2){left:36%;top:6%;transform:rotate(7deg);z-index:1}
+#ups .uimg.ref img:nth-of-type(3){left:20%;top:30%;transform:rotate(-2deg);z-index:2}
+#ups .uimg.ref span{position:absolute;left:6px;bottom:6px;z-index:3;font:800 10.5px/1 var(--body);letter-spacing:.08em;background:#fff;color:#000;padding:5px 7px;border-radius:6px}
+#ups .ut b{font:800 15px/1.2 var(--disp);color:#fff}
+#ups .ut small{font-size:12.5px;line-height:1.35;color:var(--mut)}
+#ups .uval{font-size:13.5px;color:var(--mut);border-top:1px dashed #333;padding-top:12px}
+#ups .uval b{color:#fff}
+#ups .kcard{padding:26px 20px 22px;display:grid;gap:14px}
+#ups .kico{width:56px;height:56px;border-radius:18px;background:var(--s2);border:1px solid var(--line);display:grid;place-items:center}
+#ups .kico .ico{width:30px;height:30px}
+#ups .topics{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+#ups .topics li{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--txt)}
+#ups .topics li::before{content:"";width:8px;height:8px;margin-top:8px;flex:none;border-radius:50%;background:var(--red)}
+#ups .fine{margin-top:22px;font-size:12px;line-height:1.5;color:#777}
+#ups .harga{padding-top:40px}
+#ups .pcard{position:relative;padding:34px 20px 22px;border:2px solid #fff;border-radius:26px;background:var(--s1);display:grid;gap:16px;margin-top:14px}
+#ups .ptab{position:absolute;left:50%;top:0;transform:translate(-50%,-50%);white-space:nowrap;font:800 12.5px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;background:var(--red);color:#fff;padding:10px 16px;border-radius:999px;max-width:calc(100% - 24px);overflow:hidden;text-overflow:ellipsis}
+#ups .prow{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:15px;color:var(--mut);padding-bottom:10px;border-bottom:1px dashed #333}
+#ups .prow b{color:#fff;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+#ups .prow s{color:#cfcfcf;font-weight:800;text-decoration-color:var(--red2);text-decoration-thickness:2px;white-space:nowrap}
+#ups .pbig{display:grid;justify-items:center;gap:4px;text-align:center;padding:4px 0}
+#ups .pbig small{font:800 12.5px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--red2)}
+#ups .pbig b{font:800 clamp(68px,20vw,92px)/1 var(--disp);color:#fff;letter-spacing:-.02em}
+#ups .pbig span{font-size:15px;color:var(--txt)}
+#ups .ladder{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;position:relative}
+#ups .ladder li{border:1px solid var(--line);border-radius:14px;padding:10px 8px;text-align:center;display:grid;gap:2px;background:#0b0b0b}
+#ups .ladder b{font:800 17px/1.1 var(--disp);color:#fff}
+#ups .ladder span{font-size:11.5px;line-height:1.3;color:var(--mut)}
+#ups .ladder li.now{border-color:var(--red);background:var(--redd)}
+#ups .ladder li.now b{color:var(--red2)}
+#ups .lnote{font-size:14px;color:var(--mut);text-align:center}
+#ups .pcard .btn{min-height:60px;font-size:17px}
+#ups .assure{display:grid;gap:10px}
+#ups .assure div{display:flex;gap:10px;align-items:center;font-size:14px;color:var(--mut);line-height:1.4}
+#ups .assure b{color:#fff}
+#ups .secure{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;font-size:12.5px;color:#8a8a8a}
+#ups .formhint{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:22px;font:700 14px/1 var(--body);color:var(--mut)}
+#ups .formhint::before,#ups .formhint::after{content:"";flex:1;max-width:80px;border-top:2px dotted #444}
+#ups .sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(0,0,0,.94);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .18s ease}
+#ups .sticky.show{transform:none}
+#ups .sticky .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+#ups .sticky span{font-size:14px;color:var(--txt);line-height:1.3}
+#ups .sticky span b{color:#fff}
+#ups .sticky .btn{width:auto;min-height:46px;padding:10px 18px;font-size:15px;flex:none}
+#ups .endpad{height:24px}
+@media (max-width:370px){#ups .wrap{padding:0 16px}
+#ups .rail{padding-left:16px;padding-right:16px}
+#ups .b{font-size:12.5px}
+#ups .dbody{grid-template-columns:minmax(0,42%) minmax(0,1fr)}
+}
+@media (min-width:760px){#ups section{padding:80px 0}
+#ups .gitem{width:calc(25% - 9px)}
+#ups .rail{padding-left:max(20px,calc((100vw - 1040px)/2));padding-right:20px}
+#ups .rail>*{width:200px}
+#ups .duo{grid-template-columns:1fr 1fr}
+}
+@media (min-width:980px){#ups .hgrid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px}
+#ups .htext{gap:22px}
+#ups .sticky .wrap{justify-content:center;gap:24px}
+}
+@media (prefers-reduced-motion:reduce){#ups *,#ups *::before,#ups *::after{animation:none!important;transition:none!important}
+#ups .demo.running [data-step]{opacity:1;transform:none}
+}
+</style>
+<div id="ups">
+
+<header class="head"><div class="wrap">
+  <a class="logo" data-go="ups-top" role="button" tabindex="0"><i aria-hidden="true"></i>Upgradia Styles</a>
+  <a class="headlink" data-go="ups-paket" role="button" tabindex="0">Isi paket</a>
+</div></header>
+
+<main>
+
+<section class="hero" id="ups-top"><div class="wrap hgrid">
+  <div class="htext">
+    <span class="label">Untuk business owner, content creator &amp; tim marketing</span>
+    <h1>Bikin konten <span class="hl sweep">5x lebih banyak</span> tanpa begadang ngedit.</h1>
+    <p class="sub"><b class="w">Kamu rekam, Claude yang editin.</b> Tanpa bayar editor mahal, tanpa nunggu mood.</p>
+    <a class="btn" data-go="ups-paket" role="button" tabindex="0" data-herocta>Lihat isi paket &amp; harga ↓</a>
+    <p class="req"><b>Butuh laptop + Claude Pro ±US$20/bulan.</b><br>Panduan dari nol · Update gaya baru gratis</p>
+  </div>
+
+  <div class="demo card" data-demo data-stage="5">
+    <div class="dtop"><b>Dari mentah ke siap posting</b><span class="pill">Claude Code + Upgradia</span></div>
+    <div class="dbody">
+      <div class="dvid">
+        <div class="vid"><span>Gold Editorial<br>(klip asli)</span><video muted loop playsinline preload="none" data-src="gold-editorial.mp4" data-poster="gold-editorial.jpg" aria-label="Contoh hasil gaya Gold Editorial"></video><img class="raw" data-img="raw.jpg" alt="Rekaman mentah dari HP"></div>
+        <span class="tag" data-tag>Hasil edit</span>
+        <div class="fx" aria-hidden="true"><span>✂ Jeda dipotong</span><span>Aa Caption per kata</span><span>✦ Grafis &amp; judul</span></div>
+        <div class="rbar" aria-hidden="true"><span>Rendering…</span><i><em></em></i></div>
+        <span class="done"><i>✓</i>Siap posting</span>
+      </div>
+      <ol class="dsteps">
+        <li data-s="1"><b>Video mentah masuk</b><small>Rekaman HP apa adanya</small></li>
+        <li data-s="2"><b>Kamu kasih arahan</b><small>“Pakai gaya Gold Editorial”</small></li>
+        <li data-s="3"><b>Claude ngedit</b><small>Potong jeda, caption, grafis</small></li>
+        <li data-s="4"><b>Render</b><small>Jadi MP4 9:16</small></li>
+        <li data-s="5"><b>Siap posting</b><small>Tinggal upload</small></li>
+      </ol>
+    </div>
+    <p class="small mut">Ilustrasi alur. Waktu render asli lebih lama.</p>
+  </div>
+</div></section>
+
+<section class="pain" style="padding-top:24px"><div class="wrap narrow">
+  <span class="label r">Kenal ini?</span>
+  <h2 style="margin-top:10px">Kontennya udah ada. Yang bikin jarang posting itu <span class="ul">ngeditnya.</span></h2>
+  <div class="ps card">
+    <div class="pr"><p class="pp">Habis rekam udah capek, ngeditnya makan waktu lebih lama lagi.</p><p class="pa">Claude yang ngedit. Kamu tinggal ngecek.</p></div>
+    <div class="pr"><p class="pp">Hasil edit naik-turun, tergantung mood.</p><p class="pa">23 gaya siap pakai. Hasilnya konsisten.</p></div>
+    <div class="pr"><p class="pp">Waktunya selalu kalah sama urusan bisnis.</p><p class="pa">±20–40 menit per video, kebanyakan nunggu render.</p></div>
+    <div class="pr"><p class="pp">Bayar editor tiap video, ongkosnya jalan terus.</p><p class="pa">Sekali bayar paket, pakai terus.</p></div>
+    <div class="pr"><p class="pp">Ujung-ujungnya jarang posting, nggak konsisten.</p><p class="pa">Rekam beberapa sekaligus, posting rutin.</p></div>
+  </div>
+</div></section>
+
+<section id="ups-gaya"><div class="wrap">
+  <div class="shead">
+    <span class="label r">Contoh hasil</span>
+    <h2>1 rekaman.<br><span class="ul">7 rasa editan.</span></h2>
+    <p class="sub mut">7 contoh dari 23 gaya. Semua dari 1 rekaman HP. Ketuk untuk menonton.</p>
+  </div>
+  <div class="gal" data-gal></div>
+  <div class="after"><a class="btn2" data-go="ups-paket" role="button" tabindex="0">Lihat isi paket &amp; harga ↓</a></div>
+</div></section>
+
+<section id="ups-animasi" style="padding-top:8px">
+  <div class="wrap shead">
+    <span class="label r">Gaya animasi</span>
+    <h2>Mau konten tanpa wajah? <span class="ul">Ada animasinya.</span></h2>
+    <p class="sub mut">Untuk konten faceless. Gaya baru masuk lewat update, gratis.</p>
+  </div>
+  <div class="rail" data-anim></div>
+  <div class="wrap"><p class="railnote">Geser untuk lihat semuanya →</p></div>
+</section>
+
+<section id="ups-cara"><div class="wrap narrow">
+  <span class="label r">Cara kerjanya</span>
+  <h2 style="margin-top:10px">Rekam. Pilih gaya. <span class="hl">Arahkan.</span></h2>
+  <ol class="steps">
+    <li><span class="n">01</span><div><h3>Rekam ngomong pakai HP</h3><p>Salah ngomong? Biarin, nanti dipotong.</p></div></li>
+    <li><span class="n">02</span><div><h3>Pilih satu dari 23 gaya</h3><p>Claude motong jeda, pasang caption &amp; grafis.</p></div></li>
+    <li><span class="n">03</span><div><h3>Cek storyboard, lalu render</h3><p>Mau ganti judul? Cukup bilang, baru jadi MP4.</p></div></li>
+  </ol>
+  <p class="engine mut">Jalan di laptopmu pakai <b>Claude Code</b>. Nggak perlu nulis kode.</p>
+  <div class="after" style="justify-content:flex-start"><a class="btn2" data-go="ups-paket" role="button" tabindex="0">Lihat isi paket &amp; harga ↓</a></div>
+</div></section>
+
+<section><div class="wrap narrow">
+  <span class="label r">Yang bikin</span>
+  <h2 style="margin-top:10px">Kami pakai sendiri, <span class="ul">tiap hari.</span></h2>
+  <div class="duo" data-pembuat></div>
+</div></section>
+
+<section id="ups-faq"><div class="wrap narrow">
+  <span class="label r">Biar jelas dari awal</span>
+  <h2 style="margin-top:10px">Yang kamu siapkan</h2>
+  <div class="need card">
+    <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path class="r" d="M11 18h2"/></svg><p><b>HP untuk merekam</b><span>Kamera HP biasa cukup.</span></p></div>
+    <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path class="r" d="M1 20h22"/></svg><p><b>Laptop/PC Windows atau Mac</b><span>Tempat editnya jalan. Spesifikasi di FAQ.</span></p></div>
+    <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path class="r" d="M7 15h4"/></svg><p><b>Claude Pro ±US$20/bulan</b><span>Langganan terpisah dari Anthropic.</span></p></div>
+  </div>
+  <p class="needtxt">Nggak perlu nulis kode. Dipandu video langkah demi langkah.</p>
+  <div class="guar card" data-g><span class="seal"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><p><b>Garansi Video Pertama 7 Hari.</b> Video pertamamu belum jadi dalam 7 hari? Kami bantu via Zoom sampai jadi. Tetap gagal, uang kembali.</p></div>
+
+  <h3 class="faqh">Yang sering ditanyain</h3>
+  <div class="faq" data-faq></div>
+  <a class="btn2 ask" data-wa data-go="ups-faq" role="button" tabindex="0" hidden>Pertanyaanmu belum ada? Tanya via WhatsApp</a>
+  <p class="fine">Claude adalah produk Anthropic. Upgradia tidak berafiliasi dengan Anthropic. © Upgradia · <span data-cfg="kontak">@upgradiaidn</span></p>
+</div></section>
+
+<section id="ups-paket" class="paket"><div class="wrap narrow">
+  <span class="label r">Isi paket</span>
+  <h2>Bukan cuma gaya.<br>Ini <span class="hl">satu paketnya.</span></h2>
+  <div class="olist card" data-offer></div>
+</div></section>
+
+<section id="ups-update" style="padding-top:8px"><div class="wrap narrow">
+  <div class="ucard card">
+    <span class="utab">Update berkala</span>
+    <h2>Beli sekali.<br>Tiap ada update, <span class="ul">kamu ikut dapat.</span></h2>
+    <div class="utiles">
+      <div class="ut"><div class="uimg"><img data-img="lime-punch.jpg" alt=""><i>+</i></div><b>Gaya edit baru</b><small>Gaya talking head yang lagi rame</small></div>
+      <div class="ut"><div class="uimg"><img data-img="anim-doodle.jpg" alt=""><i>+</i></div><b>Animasi baru</b><small>Buat konten tanpa wajah</small></div>
+      <div class="ut"><div class="uimg ref"><img data-img="pop-reaction.jpg" alt=""><img data-img="anim-angka.jpg" alt=""><img data-img="halftone-paper.jpg" alt=""><span>REF</span><i>+</i></div><b>Referensi baru</b><small>Contoh gaya dari konten yang lagi viral</small></div>
+    </div>
+    <p>Semuanya masuk ke file paketmu dan dikirim ke email. Gratis, tanpa bayar lagi.</p>
+    <p class="uval">Nilai <b data-k="unil">Rp299.000</b> · sudah termasuk</p>
+  </div>
+</div></section>
+
+<section style="padding-top:8px"><div class="wrap narrow">
+  <div class="kcard card">
+    <span class="kico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-4 3v-3H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/><path class="r" d="M20 9h1a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-1v3l-3-3h-4"/></svg></span>
+    <span class="label r">Komunitas tumbuh bareng</span>
+    <h2>Ada teman belajarnya.</h2>
+    <p>Grup WhatsApp khusus customer, buat ngobrol soal AI editing dan konten.</p>
+    <ul class="topics">
+      <li>Tanya kalau mentok</li>
+      <li>Pamer hasil, minta masukan</li>
+      <li>Info gaya baru duluan</li>
+    </ul>
+    <p class="small mut">Ke depan juga bahas AI marketing. Link grup dikirim setelah pembelian.</p>
+    <p class="uval">Nilai <b data-k="knil">Rp199.000</b> · sudah termasuk</p>
+  </div>
+</div></section>
+
+<section id="ups-harga" class="harga"><div class="wrap narrow">
+  <div class="pcard" data-pcard>
+    <span class="ptab">Harga spesial · <span data-cfg="kuota">100</span> pembeli pertama<span data-sisa></span></span>
+    <div class="prow"><span>Total nilai isi paket</span><b data-k="tot">–</b></div>
+    <div class="prow"><span>Harga normal</span><s data-cfg="normal">Rp249rb</s></div>
+    <div class="pbig"><small>Harga spesial hari ini</small><b data-cfg="uji">Rp99rb</b><span>Sekali bayar. Update paket gratis.</span></div>
+    <ol class="ladder" data-ladder aria-label="Tangga harga"></ol>
+    <p class="lnote">Harga naik bertahap saat isi paket bertambah. Yang beli sekarang tetap dapat semua update.</p>
+    <a class="btn" data-buy data-go="ups-harga" role="button" tabindex="0">Isi data &amp; lanjut bayar ↓</a>
+    <div class="assure">
+      <div data-g><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path class="r" d="M8.5 12l2.5 2.5 4.5-5"/></svg><span><b>Garansi Video Pertama 7 Hari</b></span></div>
+      <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path class="r" d="M3 7l9 6 9-6"/></svg><span><b>File dikirim ke email.</b> Pastikan emailmu benar, lalu cek inbox atau folder spam.</span></div>
+    </div>
+    <div class="secure"><span>🔒 Pembayaran aman</span><span>QRIS &amp; transfer bank</span></div>
+    <a class="btn2" data-wa data-go="ups-faq" role="button" tabindex="0" hidden>Masih ragu? Tanya via WhatsApp</a>
+  </div>
+  <p class="formhint" data-formhint>Isi form pemesanan di bawah</p>
+</div></section>
+
+</main>
+
+<div class="sticky" data-sticky aria-hidden="true"><div class="wrap">
+  <span><b>23 gaya</b> + update gratis</span>
+  <a class="btn" data-go="ups-paket" role="button" tabindex="-1">Isi paket &amp; harga</a>
+</div></div>
+
+<div class="endpad"></div>
+<div id="ups-end" aria-hidden="true"></div>
+</div>
+<script>
+(function(){
+/* ====== PENGATURAN: ubah di sini saja ====== */
+const CONFIG = {
+  checkoutUrl: "",                  // kosong = tombol "Isi data & lanjut bayar" turun ke form checkout di bawah blok (Lynk). Isi URL kalau checkout di halaman lain
+  mediaBase: "https://cdn.jsdelivr.net/gh/agiljendranm/upgradia-lp-aset@v1/upgradia-styles/",   // klip & gambar: repo publik GitHub agiljendranm/upgradia-lp-aset lewat jsDelivr (tag v1)
+  mediaCadangan: "https://agiljendranm.github.io/upgradia-lp-aset/upgradia-styles/",   // cadangan otomatis (GitHub Pages repo yang sama) kalau jsDelivr gagal
+  hargaUji: 99000,                  // satu-satunya harga jual yang tampil (kartu harga paling bawah)
+  hargaNormal: 249000,
+  tangga: [99000, 149000, 249000],  // tangga harga: sekarang → berikutnya → normal
+  kuota: 100,
+  sisa: null,                       // isi angka nyata (mis. 63) kalau mau tampil "sisa 63"; null = tidak tampil
+  // isi paket (nilai = estimasi nilai komponen; total dihitung otomatis bersama update + komunitas)
+  penawaran: [
+    { ikon: "grid",  tag: "Inti",    judul: "23 Gaya Edit Talking Head", manfaat: "Videomu langsung kelihatan profesional. Tinggal pilih gayanya.", nilai: 1150000 },
+    { ikon: "cog",   tag: "Inti",    judul: "Mesin Edit Otomatis", manfaat: "Potong jeda, caption per kata, grafis, sampai render MP4. Tanpa buka CapCut.", nilai: 499000 },
+    { ikon: "spark", tag: "Inti",    judul: "Skill Claude “Upgradia Edit”", manfaat: "Claude langsung paham gayanya. Revisi cukup 1 kalimat.", nilai: 299000 },
+    { ikon: "play",  tag: "Panduan", judul: "Video Panduan Pasang dari Nol", manfaat: "Langkah demi langkah sampai siap dipakai.", nilai: 199000 },
+    { ikon: "book",  tag: "Panduan", judul: "Modul 1: Video Mentah sampai Jadi", manfaat: "Rekam, pilih gaya, cek storyboard, posting. Plus checklist.", nilai: 249000 },
+    { ikon: "gift",  tag: "Bonus",   judul: "Modul 2: Bikin Gaya Sendiri", manfaat: "Suka gaya kreator lain? Bangun versimu dari referensi.", nilai: 499000 },
+    { ikon: "box",   tag: "Bonus",   judul: "Project Contoh untuk Latihan", manfaat: "Latihan render semua gaya pakai video contoh.", nilai: 99000 }
+  ],
+  nilaiUpdate: 299000,              // Update berkala (gaya edit, animasi, referensi baru)
+  nilaiKomunitas: 199000,           // Grup WhatsApp pembeli
+  // galeri gaya edit (klip 5 detik + poster di mediaBase): [nama file, nama gaya, keterangan]
+  gaya: [
+    ["gold-editorial", "Gold Editorial", "Judul serif emas, kartu editorial"],
+    ["lime-punch", "Lime Punch", "Kata kunci dipukul warna lime"],
+    ["neon-notif", "Neon Notif", "Kata neon + notifikasi HP"],
+    ["pop-reaction", "Pop Reaction", "Stiker, emoji, kata diketik"],
+    ["halftone-paper", "Halftone Paper", "Gaya koran + TV jadul"],
+    ["prompt-split", "Prompt Split", "Chat AI di atas, wajah di bawah"],
+    ["chrome-glow", "Chrome Glow Tech", "Teks chrome + timeline menyala"]
+  ],
+  // galeri animasi: yang sudah ada diisi [file, nama, keterangan]; sisa slot tampil "masuk di update berikutnya"
+  animasi: [
+    ["anim-cerita", "Cerita Ilustrasi", "Ilustrasi hangat untuk storytelling"],
+    ["anim-kertas", "Kertas Potong", "Kertas berlapis ala dongeng"],
+    ["anim-doodle", "Doodle Papan Tulis", "Coretan tangan untuk tips"],
+    ["anim-angka", "Infografis Angka", "Angka & hitungan yang hidup"],
+    ["anim-benda", "Benda Berkarakter 3D", "Benda clay yang bisa ngomong"],
+    ["clay-motion", "Clay Motion", "Cerita produk animasi clay 3D"]
+  ],
+  animasiSlot: 7,                   // total kotak; sisanya tampil "masuk di update berikutnya"
+  // bagian "Yang bikin": foto kosong = tampil huruf awal nama. Kutipan Kevin = DRAF, minta persetujuan Kevin dulu
+  pembuat: [
+    { nama: "Agil", peran: "Founder Upgradia", foto: "raw.jpg", kutipan: "Dulu ngedit 1 video aja bisa makan semalam. Sekarang aku bisa beresin 10 video sekaligus." },
+    { nama: "Kevin", peran: "Partner Upgradia", foto: "", kutipan: "Yang sering menghambat sales itu kemampuan bikin konten, terutama ngedit. Sekarang mau talking head, karakter AI, atau animasi, output kami bisa 5x lebih banyak." }
+  ],
+  garansi: true,                    // false kalau Garansi Video Pertama 7 Hari belum disetujui
+  wa: "",                           // link WhatsApp, mis. "https://wa.me/62812xxxx?text=Halo%20Upgradia"
+  kontak: "@upgradiaidn"
+};
+/* =========================================== */
+
+const ROOT = document.getElementById("ups");
+if (!ROOT || ROOT.dataset.siap) return; ROOT.dataset.siap = "1";
+const $$ = (s, r=ROOT) => [...r.querySelectorAll(s)];
+const $ = (s, r=ROOT) => r.querySelector(s);
+const rp = n => "Rp" + Math.round(n).toLocaleString("id-ID");
+const rb = n => "Rp" + Math.round(n/1000) + "rb";
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const smooth = reduce ? "auto" : "smooth";
+const M = f => CONFIG.mediaBase + f;
+/* alamat utama gagal → coba alamat cadangan sekali; tetap gagal → elemennya dibuang */
+const cadangan = (el, attr, f) => { if (!CONFIG.mediaCadangan || el.dataset.cad) return false; el.dataset.cad = "1"; el[attr] = CONFIG.mediaCadangan + f; return true; };
+
+const ICON = {
+  grid:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect class="r" x="14" y="14" width="7" height="7" rx="1.5"/>',
+  cog:'<circle class="r" cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/>',
+  spark:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><path class="r" d="M12 8l1.4 2.6L16 12l-2.6 1.4L12 16l-1.4-2.6L8 12l2.6-1.4z"/>',
+  play:'<rect x="2" y="5" width="20" height="14" rx="3"/><path class="r" d="M10 9l5 3-5 3z"/>',
+  book:'<path d="M4 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4z"/><path d="M20 4h-6a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6z"/><path class="r" d="M7 8h2M15 8h2"/>',
+  gift:'<rect x="3" y="9" width="18" height="12" rx="2"/><path d="M3 13h18M12 9v12"/><path class="r" d="M12 9C10 5 6 5 7.5 8S12 9 12 9s3.5.5 4.5-1S14 5 12 9z"/>',
+  box:'<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/><path class="r" d="M7.5 5l9 4"/>'
+};
+
+/* isi teks dari CONFIG */
+const CFG = { uji: rb(CONFIG.hargaUji), normal: rb(CONFIG.hargaNormal), kuota: CONFIG.kuota, kontak: CONFIG.kontak };
+$$("[data-cfg]").forEach(el => { const v = CFG[el.dataset.cfg]; if (v !== undefined) el.textContent = v; });
+if (typeof CONFIG.sisa === "number") $$("[data-sisa]").forEach(el => el.textContent = ` (sisa ${CONFIG.sisa})`);
+if (CONFIG.wa) $$("[data-wa]").forEach(a => { a.hidden = false; a.href = CONFIG.wa; a.target = "_blank"; a.rel = "noopener"; a.removeAttribute("data-go"); });
+if (!CONFIG.garansi) $$("[data-g]").forEach(el => el.remove());
+if (CONFIG.checkoutUrl) { const fh = $("[data-formhint]"); if (fh) fh.remove(); }
+
+/* galeri gaya edit + animasi */
+const tile = ([s, n, d]) => `<div class="gitem"><button class="tile" type="button" data-play aria-label="Putar contoh ${n}"><div class="vid"><span>${n}<br>(klip asli)</span><video muted loop playsinline preload="none" data-src="${s}.mp4" data-poster="${s}.jpg"></video></div><span class="tag">klip asli</span><span class="play" aria-hidden="true"></span></button><div class="gname"><b>${n}</b><small>${d}</small></div></div>`;
+$("[data-gal]").innerHTML = CONFIG.gaya.map(tile).join("");
+const slots = Math.max(CONFIG.animasiSlot - CONFIG.animasi.length, 0);
+$("[data-anim]").innerHTML = CONFIG.animasi.map(tile).join("") + Array.from({length: slots}, () => `<div class="slot"><i>+</i><b>Animasi baru</b><small>Masuk di update berikutnya</small></div>`).join("");
+
+/* yang bikin */
+$("[data-pembuat]").innerHTML = CONFIG.pembuat.map(p => `<figure class="person card" style="margin:0"><div class="mtop"><span class="portrait">${p.nama.charAt(0)}${p.foto ? `<img data-img="${p.foto}" alt="${p.nama}">` : ""}</span><p class="who"><b>${p.nama}</b>${p.peran}</p></div><p class="quote">${p.kutipan}</p></figure>`).join("");
+
+/* isi paket */
+$("[data-offer]").innerHTML = CONFIG.penawaran.map(o => `<div class="orow"><span class="oico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${ICON[o.ikon] || ICON.box}</svg></span><div><span class="otag ${o.tag === "Bonus" ? "bonus" : ""}">${o.tag}</span><div class="otop"><h3>${o.judul}</h3><span class="oval">Nilai <b>${rp(o.nilai)}</b></span></div><p>${o.manfaat}</p></div></div>`).join("");
+const total = CONFIG.penawaran.reduce((s, o) => s + o.nilai, 0) + CONFIG.nilaiUpdate + CONFIG.nilaiKomunitas;
+$('[data-k="tot"]').textContent = rp(total);
+$('[data-k="unil"]').textContent = rp(CONFIG.nilaiUpdate);
+$('[data-k="knil"]').textContent = rp(CONFIG.nilaiKomunitas);
+$("[data-ladder]").innerHTML = CONFIG.tangga.map((h, i) => i === 0
+  ? `<li class="now"><b>Sekarang</b><span>harga spesial</span></li>`
+  : `<li><b>${rb(h)}</b><span>${i === CONFIG.tangga.length - 1 ? "harga normal" : "berikutnya"}</span></li>`).join("");
+
+/* FAQ */
+const FAQ = [
+  ["Harus bisa coding?", "Nggak. Claude yang mengetik semua perintahnya. Kamu cukup menempel kalimat dari modul, atau ngobrol biasa."],
+  ["Bisa cuma pakai HP?", "Rekamnya cukup pakai HP. Ngeditnya di laptop/PC (Windows atau Mac), karena Claude Code dan mesin editnya jalan di sana."],
+  ["Kenapa butuh Claude berbayar?", "Claude Code, yang mengerjakan editnya di laptopmu, hanya ada di akun berbayar (Pro ±US$20/bulan). Langganan yang sama juga bisa kamu pakai untuk kerjaan lain. Kami sebut dari awal supaya kamu nggak kaget."],
+  ["Butuh laptop seperti apa?", "Windows 10/11 atau Mac, RAM minimal 8 GB (ideal 16 GB), ruang kosong ±10 GB, dan internet untuk unduhan pertama ±1 GB."],
+  ["Berapa lama satu video?", "Persiapan sekali ±45–60 menit. Setelah itu dari uji kami ±20–40 menit per video, dan kebanyakan waktunya cuma menunggu render. Kerjamu ngecek potongan dan storyboard."],
+  ["Hasil AI biasanya kaku. Ini beda?", "Gayanya bukan dibuat asal oleh AI. Tiap gaya sudah dirancang dan diuji ke rekaman wajah asli, dan Claude mengikutinya. Kamu juga lihat storyboard-nya dulu dan bisa minta ubah sebelum render. Semua contoh di halaman ini hasil asli, bukan mockup."],
+  ["Update dan komunitasnya gimana?", "Setiap ada gaya editing, motion graphics/animasi, atau referensi gaya baru, file-nya dikirim ke email pembeli tanpa biaya tambahan. Link grup WhatsApp pembeli dikirim setelah pembelian."],
+  ["Harganya bakal naik?", `Iya, bertahap seiring isi paket bertambah: harga spesial untuk ${CONFIG.kuota} pembeli pertama, lalu ${rb(CONFIG.tangga[1])}, lalu harga normal ${rb(CONFIG.hargaNormal)}. Yang sudah beli tetap dapat semua update tanpa bayar lagi.`],
+  ["Boleh dipakai tim marketing kantor?", "Boleh. Mesinnya memakai Remotion, yang gratis untuk perorangan dan tim sampai 3 orang. Tim 4 orang ke atas perlu lisensi Remotion sendiri."],
+  ["Kalau nggak jalan di laptopku?", CONFIG.garansi ? "Ikuti video panduannya dulu. Kalau dalam 7 hari video pertamamu belum jadi di laptop yang memenuhi syarat, Garansi Video Pertama berlaku: kami bantu lewat Zoom sampai jadi, atau uangmu kembali." : "Ikuti video panduannya dulu. Kalau masih buntu, hubungi kami dan kami bantu."]
+];
+$("[data-faq]").innerHTML = FAQ.map(([q, a], i) => `<details ${i === 0 ? "open" : ""}><summary>${q}</summary><p>${a}</p></details>`).join("");
+
+/* navigasi tanpa mengubah alamat halaman (aman untuk Lynk) */
+const goTo = id => { const el = document.getElementById(id); if (el) el.scrollIntoView({behavior: smooth, block: "start"}); };
+const toForm = () => { if (CONFIG.checkoutUrl) { location.href = CONFIG.checkoutUrl; return; } goTo("ups-end"); };
+function act(e){
+  const b = e.target.closest("[data-buy]"); if (b) { e.preventDefault(); toForm(); return; }
+  const g = e.target.closest('[data-go],a[href^="#"]');
+  if (g && !(g.hasAttribute("data-wa") && CONFIG.wa)) { const id = g.dataset.go || g.getAttribute("href").slice(1); if (id) { e.preventDefault(); goTo(id); } }
+}
+ROOT.addEventListener("click", act);
+ROOT.addEventListener("keydown", e => { if ((e.key === "Enter" || e.key === " ") && e.target.closest("[data-buy],[data-go]")) act(e); });
+
+/* gambar & video */
+$$("img[data-img]").forEach(img => { img.onerror = () => { if (!cadangan(img, "src", img.dataset.img)) img.remove(); }; img.loading = "lazy"; img.src = M(img.dataset.img); });
+const vids = $$("video[data-src]");
+const isi = v => { if (!v.getAttribute("src")) v.src = M(v.dataset.src); };
+vids.forEach(v => {
+  v.poster = M(v.dataset.poster);
+  if (CONFIG.mediaCadangan) { const p = new Image(); p.onerror = () => { v.poster = CONFIG.mediaCadangan + v.dataset.poster; }; p.src = v.poster; }
+  v.addEventListener("error", () => { if (!cadangan(v, "src", v.dataset.src)) { const t = v.closest(".tile"); if (t) t.classList.remove("playing"); v.remove(); } else v.play().catch(()=>{}); });
+});
+const io = "IntersectionObserver" in window;
+/* klip demo: jalan sendiri saat terlihat; klip galeri: diputar saat diketuk, berhenti saat keluar layar */
+if (io) {
+  const obs = new IntersectionObserver(es => es.forEach(e => {
+    const v = e.target;
+    if (e.isIntersecting) { if ("auto" in v.dataset && !reduce) { isi(v); v.play().catch(()=>{}); } }
+    else { v.pause(); const t = v.closest(".tile"); if (t) t.classList.remove("playing"); }
+  }), {rootMargin: "120px"});
+  vids.forEach(v => obs.observe(v));
+}
+ROOT.addEventListener("click", e => {
+  const t = e.target.closest("[data-play]"); if (!t) return;
+  const v = $("video", t); if (!v) return;
+  if (t.classList.contains("playing")) { v.pause(); t.classList.remove("playing"); return; }
+  $$(".tile.playing").forEach(o => { o.classList.remove("playing"); const ov = $("video", o); if (ov) ov.pause(); });
+  isi(v); t.classList.add("playing"); v.play().catch(() => t.classList.remove("playing"));
+});
+
+/* demo alur: mentah → arahan → Claude ngedit → render → siap posting (jalan sendiri saat terlihat, berulang) */
+const demo = $("[data-demo]"), dv = $("video", demo), dtag = $("[data-tag]", demo), dsteps = $$("[data-s]", demo);
+const LAMA = [1500, 1500, 2300, 2400, 6000];
+let tahap = 5, dTimer = null, dJalan = false;
+function tampil(n){
+  tahap = n; demo.dataset.stage = n;
+  dsteps.forEach(li => { const k = +li.dataset.s; li.classList.toggle("ok", k < n || n === 5); li.classList.toggle("on", k === n && n !== 5); });
+  dtag.textContent = n === 5 ? "Hasil edit" : "Video mentah";
+  if (n === 5) { isi(dv); try { dv.currentTime = 0; } catch (_) {} dv.play().catch(()=>{}); } else dv.pause();
+}
+function putar(){ clearTimeout(dTimer); if (!dJalan) return; dTimer = setTimeout(() => { tampil(tahap === 5 ? 1 : tahap + 1); putar(); }, LAMA[tahap - 1]); }
+dsteps.forEach(li => li.classList.add("ok"));
+if (io && !reduce) new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting && !dJalan) { dJalan = true; tampil(1); putar(); }
+  else if (!e.isIntersecting && dJalan) { dJalan = false; clearTimeout(dTimer); dv.pause(); }
+}), {threshold: .35}).observe(demo);
+else { isi(dv); }
+
+/* bilah lengket: muncul setelah tombol hero lewat, hilang saat kartu harga terlihat / sudah dilewati */
+const sticky = $("[data-sticky]"), heroCta = $("[data-herocta]"), pcard = $("[data-pcard]");
+let heroIn = true, hargaIn = false;
+const upd = () => { const on = !heroIn && !hargaIn; sticky.classList.toggle("show", on); sticky.setAttribute("aria-hidden", on ? "false" : "true"); $("a", sticky).tabIndex = on ? 0 : -1; };
+if (io) {
+  new IntersectionObserver(es => es.forEach(e => { heroIn = e.isIntersecting || e.boundingClientRect.top > 0; upd(); })).observe(heroCta);
+  new IntersectionObserver(es => es.forEach(e => { hargaIn = e.isIntersecting || e.boundingClientRect.top < 0; upd(); })).observe(pcard);
+}
+})();
+</script>
