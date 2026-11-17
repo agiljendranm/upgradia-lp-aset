@@ -123,6 +123,9 @@ html,body{background:#000;margin:0}
 #ups .play{position:absolute;left:50%;top:50%;z-index:2;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;background:rgba(0,0,0,.55);border:2px solid #fff;display:grid;place-items:center;transition:opacity .18s,transform .18s}
 #ups .play::after{content:"";border-left:15px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px}
 #ups .tile.playing .play{opacity:0;transform:scale(.8)}
+#ups .snd{position:absolute;right:8px;bottom:8px;z-index:3;display:flex;align-items:center;gap:5px;min-height:36px;padding:6px 11px;border:0;border-radius:999px;background:rgba(0,0,0,.72);color:#fff;font:800 12.5px/1 var(--body);cursor:pointer}
+#ups .snd i{font-style:normal;font-size:14px}
+#ups .snd[aria-pressed="true"]{background:var(--red)}
 #ups .tile .tag{top:10px;left:10px}
 #ups .gname{display:grid;gap:1px;padding:0 2px}
 #ups .gname b{font:800 17px/1.2 var(--disp);color:#fff}
@@ -191,13 +194,13 @@ html,body{background:#000;margin:0}
 #ups .utiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 #ups .ut{display:grid;gap:4px;align-content:start;min-width:0}
 #ups .uimg{position:relative;aspect-ratio:9/14;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--s2);margin-bottom:6px}
-#ups .uimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#ups .uimg img,#ups .uimg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 #ups .uimg i{position:absolute;right:6px;top:6px;z-index:3;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font:800 17px/1 var(--body);font-style:normal;box-shadow:0 2px 8px rgba(0,0,0,.5)}
 #ups .uimg.ref{background:#151515}
-#ups .uimg.ref img{width:58%;height:auto;aspect-ratio:9/16;inset:auto;border-radius:8px;border:2px solid #fff;box-shadow:0 6px 14px rgba(0,0,0,.5)}
-#ups .uimg.ref img:nth-of-type(1){left:6%;top:12%;transform:rotate(-9deg)}
-#ups .uimg.ref img:nth-of-type(2){left:36%;top:6%;transform:rotate(7deg);z-index:1}
-#ups .uimg.ref img:nth-of-type(3){left:20%;top:30%;transform:rotate(-2deg);z-index:2}
+#ups .uimg.ref video{width:58%;height:auto;aspect-ratio:9/16;inset:auto;border-radius:8px;border:2px solid #fff;box-shadow:0 6px 14px rgba(0,0,0,.5);background:#222}
+#ups .uimg.ref video:nth-of-type(1){left:6%;top:12%;transform:rotate(-9deg)}
+#ups .uimg.ref video:nth-of-type(2){left:36%;top:6%;transform:rotate(7deg);z-index:1}
+#ups .uimg.ref video:nth-of-type(3){left:20%;top:30%;transform:rotate(-2deg);z-index:2}
 #ups .uimg.ref span{position:absolute;left:6px;bottom:6px;z-index:3;font:800 10.5px/1 var(--body);letter-spacing:.08em;background:#fff;color:#000;padding:5px 7px;border-radius:6px}
 #ups .ut b{font:800 15px/1.2 var(--disp);color:#fff}
 #ups .ut small{font-size:12.5px;line-height:1.35;color:var(--mut)}
@@ -210,7 +213,7 @@ html,body{background:#000;margin:0}
 #ups .topics li{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--txt)}
 #ups .topics li::before{content:"";width:8px;height:8px;margin-top:8px;flex:none;border-radius:50%;background:var(--red)}
 #ups .fine{margin-top:22px;font-size:12px;line-height:1.5;color:#777}
-#ups .harga{padding-top:40px}
+#ups .harga{padding-top:40px;padding-bottom:6px}
 #ups .pcard{position:relative;padding:34px 20px 22px;border:2px solid #fff;border-radius:26px;background:var(--s1);display:grid;gap:16px;margin-top:14px}
 #ups .ptab{position:absolute;left:50%;top:0;transform:translate(-50%,-50%);white-space:nowrap;font:800 12.5px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;background:var(--red);color:#fff;padding:10px 16px;border-radius:999px;max-width:calc(100% - 24px);overflow:hidden;text-overflow:ellipsis}
 #ups .prow{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:15px;color:var(--mut);padding-bottom:10px;border-bottom:1px dashed #333}
@@ -242,7 +245,7 @@ html,body{background:#000;margin:0}
 #ups .addon li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.45;color:#fff;font-weight:600}
 #ups .addon li::before{counter-increment:a;content:counter(a);width:24px;height:24px;flex:none;border-radius:50%;background:var(--red);display:grid;place-items:center;font:800 12px/1 var(--body);color:#fff}
 #ups .addon li b{color:#fff;font-weight:800}
-#ups .formhint{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:22px;font:700 14px/1 var(--body);color:var(--mut)}
+#ups .formhint{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px;font:700 14px/1 var(--body);color:var(--mut)}
 #ups .formhint::before,#ups .formhint::after{content:"";flex:1;max-width:80px;border-top:2px dotted #444}
 #ups .sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(0,0,0,.94);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .18s ease}
 #ups .sticky.show{transform:none}
@@ -250,7 +253,7 @@ html,body{background:#000;margin:0}
 #ups .sticky span{font-size:14px;color:var(--txt);line-height:1.3}
 #ups .sticky span b{color:#fff}
 #ups .sticky .btn{width:auto;min-height:46px;padding:10px 18px;font-size:15px;flex:none}
-#ups .endpad{height:24px}
+#ups .endpad{height:0}
 @media (max-width:370px){#ups .wrap{padding:0 16px}
 #ups .rail{padding-left:16px;padding-right:16px}
 #ups .b{font-size:12.5px}
@@ -326,7 +329,7 @@ html,body{background:#000;margin:0}
   <div class="shead">
     <span class="label r">Contoh hasil</span>
     <h2>1 rekaman.<br><span class="ul">7 rasa editan.</span></h2>
-    <p class="sub mut">7 contoh dari 23 gaya. Semua dari 1 rekaman HP. Ketuk untuk menonton.</p>
+    <p class="sub mut">7 contoh dari 23 gaya. Semua dari 1 rekaman HP. Ketuk 🔇 untuk menyalakan suara.</p>
   </div>
   <div class="gal" data-gal></div>
   <div class="after"><a class="btn2" data-go="ups-paket" role="button" tabindex="0">Lihat isi paket &amp; harga ↓</a></div>
@@ -388,9 +391,9 @@ html,body{background:#000;margin:0}
     <span class="utab">Update berkala</span>
     <h2>Beli sekali.<br>Tiap ada update, <span class="ul">kamu ikut dapat.</span></h2>
     <div class="utiles">
-      <div class="ut"><div class="uimg"><img data-img="lime-punch.jpg" alt=""><i>+</i></div><b>Gaya edit baru</b><small>Gaya talking head yang lagi rame</small></div>
-      <div class="ut"><div class="uimg"><img data-img="anim-doodle.jpg" alt=""><i>+</i></div><b>Animasi baru</b><small>Buat konten tanpa wajah</small></div>
-      <div class="ut"><div class="uimg ref"><img data-img="pop-reaction.jpg" alt=""><img data-img="anim-angka.jpg" alt=""><img data-img="halftone-paper.jpg" alt=""><span>REF</span><i>+</i></div><b>Referensi baru</b><small>Contoh gaya dari konten yang lagi viral</small></div>
+      <div class="ut"><div class="uimg"><video muted loop playsinline preload="none" data-src="lime-punch.mp4" data-poster="lime-punch.jpg" data-auto aria-hidden="true"></video><i>+</i></div><b>Gaya edit baru</b><small>Gaya talking head yang lagi rame</small></div>
+      <div class="ut"><div class="uimg"><video muted loop playsinline preload="none" data-src="anim-doodle.mp4" data-poster="anim-doodle.jpg" data-auto aria-hidden="true"></video><i>+</i></div><b>Animasi baru</b><small>Buat konten tanpa wajah</small></div>
+      <div class="ut"><div class="uimg ref"><video muted loop playsinline preload="none" data-src="pop-reaction.mp4" data-poster="pop-reaction.jpg" data-auto aria-hidden="true"></video><video muted loop playsinline preload="none" data-src="anim-angka.mp4" data-poster="anim-angka.jpg" data-auto aria-hidden="true"></video><video muted loop playsinline preload="none" data-src="halftone-paper.mp4" data-poster="halftone-paper.jpg" data-auto aria-hidden="true"></video><span>REF</span><i>+</i></div><b>Referensi baru</b><small>Contoh gaya dari konten yang lagi viral</small></div>
     </div>
     <p>Semuanya masuk ke file paketmu dan dikirim ke email. Gratis, tanpa bayar lagi.</p>
     <p class="uval">Nilai <b data-k="unil">Rp299.000</b> · sudah termasuk</p>
@@ -457,7 +460,7 @@ html,body{background:#000;margin:0}
 /* ====== PENGATURAN: ubah di sini saja ====== */
 const CONFIG = {
   checkoutUrl: "",                  // kosong = tombol "Isi data & lanjut bayar" turun ke form checkout di bawah blok (Lynk). Isi URL kalau checkout di halaman lain
-  mediaBase: "https://cdn.jsdelivr.net/gh/agiljendranm/upgradia-lp-aset@v1/upgradia-styles/",   // klip & gambar: repo publik GitHub agiljendranm/upgradia-lp-aset lewat jsDelivr (tag v1)
+  mediaBase: "https://cdn.jsdelivr.net/gh/agiljendranm/upgradia-lp-aset@v2/upgradia-styles/",   // klip & gambar: repo publik GitHub agiljendranm/upgradia-lp-aset lewat jsDelivr (tag v2)
   mediaCadangan: "https://agiljendranm.github.io/upgradia-lp-aset/upgradia-styles/",   // cadangan otomatis (GitHub Pages repo yang sama) kalau jsDelivr gagal
   hargaUji: 99000,                  // satu-satunya harga jual yang tampil (kartu harga paling bawah)
   hargaNormal: 249000,
@@ -542,7 +545,7 @@ if (!CONFIG.addon || !CONFIG.addon.aktif) { const ad = $("[data-addon]"); if (ad
 else { $('[data-k="anama"]').textContent = CONFIG.addon.nama; $('[data-k="anama2"]').textContent = CONFIG.addon.nama; $('[data-k="aharga"]').textContent = rb(CONFIG.addon.harga); $('[data-k="amanfaat"]').textContent = CONFIG.addon.manfaat; }
 
 /* galeri gaya edit + animasi */
-const tile = ([s, n, d]) => `<div class="gitem"><button class="tile" type="button" data-play aria-label="Putar contoh ${n}"><div class="vid"><span>${n}<br>(klip asli)</span><video muted loop playsinline preload="none" data-src="${s}.mp4" data-poster="${s}.jpg"></video></div><span class="tag">klip asli</span><span class="play" aria-hidden="true"></span></button><div class="gname"><b>${n}</b><small>${d}</small></div></div>`;
+const tile = ([s, n, d]) => `<div class="gitem"><div class="tile"><div class="vid"><span>${n}<br>(klip asli)</span><video muted loop playsinline preload="none" data-src="${s}.mp4" data-poster="${s}.jpg" data-auto aria-label="Contoh ${n}"></video></div><span class="tag">klip asli</span><button class="snd" type="button" data-snd aria-pressed="false" aria-label="Nyalakan suara ${n}"><i>🔇</i>Suara</button></div><div class="gname"><b>${n}</b><small>${d}</small></div></div>`;
 $("[data-gal]").innerHTML = CONFIG.gaya.map(tile).join("");
 const slots = Math.max(CONFIG.animasiSlot - CONFIG.animasi.length, 0);
 $("[data-anim]").innerHTML = CONFIG.animasi.map(tile).join("") + Array.from({length: slots}, () => `<div class="slot"><i>+</i><b>Animasi baru</b><small>Masuk di update berikutnya</small></div>`).join("");
@@ -596,21 +599,25 @@ vids.forEach(v => {
   v.addEventListener("error", () => { if (!cadangan(v, "src", v.dataset.src)) { const t = v.closest(".tile"); if (t) t.classList.remove("playing"); v.remove(); } else v.play().catch(()=>{}); });
 });
 const io = "IntersectionObserver" in window;
-/* klip demo: jalan sendiri saat terlihat; klip galeri: diputar saat diketuk, berhenti saat keluar layar */
+/* semua klip contoh jalan sendiri (tanpa suara) saat terlihat, berhenti saat keluar layar; file baru dimuat saat mendekati layar */
 if (io) {
   const obs = new IntersectionObserver(es => es.forEach(e => {
     const v = e.target;
     if (e.isIntersecting) { if ("auto" in v.dataset && !reduce) { isi(v); v.play().catch(()=>{}); } }
-    else { v.pause(); const t = v.closest(".tile"); if (t) t.classList.remove("playing"); }
-  }), {rootMargin: "120px"});
+    else v.pause();
+  }), {rootMargin: "80px", threshold: 0.25});
   vids.forEach(v => obs.observe(v));
-}
+} else vids.forEach(v => { if ("auto" in v.dataset) isi(v); });
+/* tombol suara: browser melarang autoplay bersuara, jadi suara menyala setelah diketuk; hanya satu video bersuara */
+const senyap = b => { b.setAttribute("aria-pressed", "false"); b.querySelector("i").textContent = "🔇"; const v = $("video", b.closest(".tile")); if (v) v.muted = true; };
 ROOT.addEventListener("click", e => {
-  const t = e.target.closest("[data-play]"); if (!t) return;
-  const v = $("video", t); if (!v) return;
-  if (t.classList.contains("playing")) { v.pause(); t.classList.remove("playing"); return; }
-  $$(".tile.playing").forEach(o => { o.classList.remove("playing"); const ov = $("video", o); if (ov) ov.pause(); });
-  isi(v); t.classList.add("playing"); v.play().catch(() => t.classList.remove("playing"));
+  const b = e.target.closest("[data-snd]"); if (!b) return;
+  const v = $("video", b.closest(".tile")); if (!v) return;
+  const nyala = b.getAttribute("aria-pressed") !== "true";
+  $$("[data-snd]").forEach(o => { if (o !== b) senyap(o); });
+  if (!nyala) { senyap(b); return; }
+  b.setAttribute("aria-pressed", "true"); b.querySelector("i").textContent = "🔊";
+  isi(v); v.muted = false; try { v.currentTime = 0; } catch (_) {} v.play().catch(()=>{});
 });
 
 /* demo alur: mentah → arahan → Claude ngedit → render → siap posting (jalan sendiri saat terlihat, berulang) */
