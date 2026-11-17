@@ -67,6 +67,7 @@ html,body{background:#000;margin:0}
 #ups .head .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
 #ups .logo{display:flex;align-items:center;gap:10px;font:800 21px/1 var(--disp);color:#fff;text-decoration:none}
 #ups .logo i{width:34px;height:26px;border-radius:9px;background:var(--red);display:grid;place-items:center}
+#ups .logo small{font:700 12px/1 var(--body);color:var(--mut);margin-left:2px;align-self:flex-end;padding-bottom:3px}
 #ups .logo i::after{content:"";border-left:9px solid #fff;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:3px}
 #ups .headlink{font:700 15px/1 var(--body);color:#fff;text-decoration:none;padding:12px 4px}
 #ups .hero{padding-top:18px}
@@ -278,7 +279,7 @@ html,body{background:#000;margin:0}
 <div id="ups">
 
 <header class="head"><div class="wrap">
-  <a class="logo" data-go="ups-top" role="button" tabindex="0"><i aria-hidden="true"></i>Upgradia Styles</a>
+  <a class="logo" data-go="ups-top" role="button" tabindex="0"><i aria-hidden="true"></i>Ghost Editor<small>by Upgradia</small></a>
   <a class="headlink" data-go="ups-paket" role="button" tabindex="0">Isi paket</a>
 </div></header>
 
@@ -294,7 +295,7 @@ html,body{background:#000;margin:0}
   </div>
 
   <div class="demo card" data-demo data-stage="5">
-    <div class="dtop"><b>Dari mentah ke siap posting</b><span class="pill">Claude Code + Upgradia</span></div>
+    <div class="dtop"><b>Dari mentah ke siap posting</b><span class="pill">Claude Code + Ghost Editor</span></div>
     <div class="dbody">
       <div class="dvid">
         <div class="vid"><span>Gold Editorial<br>(klip asli)</span><video muted loop playsinline preload="none" data-src="gold-editorial.mp4" data-poster="gold-editorial.jpg" aria-label="Contoh hasil gaya Gold Editorial"></video><img class="raw" data-img="raw.jpg" alt="Rekaman mentah dari HP"></div>
@@ -436,10 +437,10 @@ html,body{background:#000;margin:0}
   </div>
   <div class="addon" data-addon>
     <span class="atag">Add-on · opsional</span>
-    <h3>Mau hasilnya makin maksimal? Tambah <span class="w" data-k="anama">Cara Shoot Konten</span> <span class="ar">+<span data-k="aharga">Rp49rb</span></span></h3>
+    <h3>Mau hasilnya makin maksimal? Tambah <span class="w" data-k="anama">The Perfect Shot</span> <span class="ar">+<span data-k="aharga">Rp49rb</span></span></h3>
     <p data-k="amanfaat">Panduan cara rekam konten pakai HP, biar rekamanmu siap diedit dan hasilnya makin bagus.</p>
     <ol>
-      <li><span>Di form bawah, centang <b data-k="anama2">Cara Shoot Konten</b> di bagian <b>ADD ON</b> (tepat di bawah nama produk)</span></li>
+      <li><span>Di form bawah, centang <b data-k="anama2">The Perfect Shot</b> di bagian <b>ADD ON</b> (tepat di bawah nama produk)</span></li>
       <li>Isi email, nama, dan nomor WhatsApp</li>
       <li><span>Pilih metode pembayaran, lalu klik <b>Bayar Sekarang</b></span></li>
     </ol>
@@ -507,7 +508,7 @@ const CONFIG = {
     { nama: "Kevin", peran: "Partner Upgradia", foto: "", kutipan: "Yang sering menghambat sales itu kemampuan bikin konten, terutama ngedit. Sekarang mau talking head, karakter AI, atau animasi, output kami bisa 5x lebih banyak." }
   ],
   // add-on di form checkout Lynk (nama & harga HARUS sama dengan add-on di produk Lynk); aktif:false = blok ajakan disembunyikan
-  addon: { aktif: true, nama: "Cara Shoot Konten", harga: 49000, manfaat: "Hasil edit sebagus apa pun nggak bisa nolong rekaman yang gelap, suaranya bergema, atau gambarnya pecah. Panduan ini ngajarin rekam pakai HP: setting kamera, cahaya, suara, cara ngomong di kamera, sampai rekam banyak video sekali duduk." },
+  addon: { aktif: true, nama: "The Perfect Shot", harga: 49000, manfaat: "Hasil edit sebagus apa pun nggak bisa nolong rekaman yang gelap, suaranya bergema, atau gambarnya pecah. The Perfect Shot ngajarin rekam pakai HP: peralatan, setting kamera, posisi, cahaya, suara, sampai cara ngomong di kamera." },
   garansi: true,                    // false kalau Garansi Video Pertama 7 Hari belum disetujui
   wa: "",                           // link WhatsApp, mis. "https://wa.me/62812xxxx?text=Halo%20Upgradia"
   kontak: "@upgradiaidn"
