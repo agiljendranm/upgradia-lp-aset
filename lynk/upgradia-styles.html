@@ -49,7 +49,7 @@ html,body{background:#000;margin:0}
 #ups .sub{font-size:16px;color:var(--txt);max-width:56ch}
 #ups .hl{position:relative;display:inline-block;padding:0 .2em;margin:0 -.05em;color:#fff;isolation:isolate}
 #ups .hl::before{content:"";position:absolute;inset:.12em 0 .04em;background:var(--red);border-radius:8px;transform:rotate(-1.5deg);transform-origin:left center;z-index:-1}
-#ups .hl.sweep::before{animation:sweep .32s cubic-bezier(.3,.7,.2,1) .25s both}
+#ups .hl.sweep::before{animation:sweep .45s cubic-bezier(.3,.7,.2,1)}
 @keyframes sweep{from{transform:rotate(-1.5deg) scaleX(0)}to{transform:rotate(-1.5deg) scaleX(1)}}
 #ups .ul{background:linear-gradient(var(--red),var(--red)) left 94%/100% .11em no-repeat;padding-bottom:.04em}
 #ups .btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:54px;padding:14px 22px;border:0;border-radius:16px;background:var(--red);color:#fff;font:800 16px/1.2 var(--body);text-decoration:none;text-align:center;cursor:pointer;box-shadow:0 4px 0 #710E1C;transition:transform .14s,box-shadow .14s,background .14s}
