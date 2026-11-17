@@ -231,6 +231,16 @@
 #ups .assure div{display:flex;gap:10px;align-items:center;font-size:14px;color:var(--mut);line-height:1.4}
 #ups .assure b{color:#fff}
 #ups .secure{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;font-size:12.5px;color:#8a8a8a}
+#ups .addon{margin-top:18px;padding:22px 20px;border:1.5px dashed var(--red);border-radius:22px;background:linear-gradient(135deg,var(--redd),var(--s1) 70%);display:grid;gap:12px}
+#ups .atag{justify-self:start;font:800 11.5px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;background:#fff;color:#000;padding:7px 10px;border-radius:999px}
+#ups .addon h3{font-size:22px;line-height:1.3}
+#ups .addon h3 .w{color:#fff;text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:3px;text-underline-offset:4px}
+#ups .addon h3 .ar{color:var(--red2);white-space:nowrap}
+#ups .addon p{font-size:15px;color:var(--txt)}
+#ups .addon ol{margin:0;padding:0;list-style:none;display:grid;gap:8px;counter-reset:a}
+#ups .addon li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.45;color:#fff;font-weight:600}
+#ups .addon li::before{counter-increment:a;content:counter(a);width:24px;height:24px;flex:none;border-radius:50%;background:var(--red);display:grid;place-items:center;font:800 12px/1 var(--body);color:#fff}
+#ups .addon li b{color:#fff;font-weight:800}
 #ups .formhint{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:22px;font:700 14px/1 var(--body);color:var(--mut)}
 #ups .formhint::before,#ups .formhint::after{content:"";flex:1;max-width:80px;border-top:2px dotted #444}
 #ups .sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(0,0,0,.94);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .18s ease}
@@ -418,6 +428,16 @@
     <div class="secure"><span>🔒 Pembayaran aman</span><span>QRIS &amp; transfer bank</span></div>
     <a class="btn2" data-wa data-go="ups-faq" role="button" tabindex="0" hidden>Masih ragu? Tanya via WhatsApp</a>
   </div>
+  <div class="addon" data-addon>
+    <span class="atag">Add-on · opsional</span>
+    <h3>Mau hasilnya makin maksimal? Tambah <span class="w" data-k="anama">Cara Shoot Konten</span> <span class="ar">+<span data-k="aharga">Rp49rb</span></span></h3>
+    <p data-k="amanfaat">Panduan cara rekam konten pakai HP, biar rekamanmu siap diedit dan hasilnya makin bagus.</p>
+    <ol>
+      <li>Isi data di form pemesanan di bawah</li>
+      <li><span>Klik <b>“Add On”</b> di bawah nama produk, lalu centang <b data-k="anama2">Cara Shoot Konten</b></span></li>
+      <li>Pilih metode pembayaran, lalu bayar</li>
+    </ol>
+  </div>
   <p class="formhint" data-formhint>Isi form pemesanan di bawah</p>
 </div></section>
 
@@ -480,6 +500,8 @@ const CONFIG = {
     { nama: "Agil", peran: "Founder Upgradia", foto: "raw.jpg", kutipan: "Dulu ngedit 1 video aja bisa makan semalam. Sekarang aku bisa beresin 10 video sekaligus." },
     { nama: "Kevin", peran: "Partner Upgradia", foto: "", kutipan: "Yang sering menghambat sales itu kemampuan bikin konten, terutama ngedit. Sekarang mau talking head, karakter AI, atau animasi, output kami bisa 5x lebih banyak." }
   ],
+  // add-on di form checkout Lynk (nama & harga HARUS sama dengan add-on di produk Lynk); aktif:false = blok ajakan disembunyikan
+  addon: { aktif: true, nama: "Cara Shoot Konten", harga: 49000, manfaat: "Panduan cara rekam konten pakai HP, biar rekamanmu siap diedit dan hasilnya makin bagus." },
   garansi: true,                    // false kalau Garansi Video Pertama 7 Hari belum disetujui
   wa: "",                           // link WhatsApp, mis. "https://wa.me/62812xxxx?text=Halo%20Upgradia"
   kontak: "@upgradiaidn"
@@ -515,6 +537,8 @@ if (typeof CONFIG.sisa === "number") $$("[data-sisa]").forEach(el => el.textCont
 if (CONFIG.wa) $$("[data-wa]").forEach(a => { a.hidden = false; a.href = CONFIG.wa; a.target = "_blank"; a.rel = "noopener"; a.removeAttribute("data-go"); });
 if (!CONFIG.garansi) $$("[data-g]").forEach(el => el.remove());
 if (CONFIG.checkoutUrl) { const fh = $("[data-formhint]"); if (fh) fh.remove(); }
+if (!CONFIG.addon || !CONFIG.addon.aktif) { const ad = $("[data-addon]"); if (ad) ad.remove(); }
+else { $('[data-k="anama"]').textContent = CONFIG.addon.nama; $('[data-k="anama2"]').textContent = CONFIG.addon.nama; $('[data-k="aharga"]').textContent = rb(CONFIG.addon.harga); $('[data-k="amanfaat"]').textContent = CONFIG.addon.manfaat; }
 
 /* galeri gaya edit + animasi */
 const tile = ([s, n, d]) => `<div class="gitem"><button class="tile" type="button" data-play aria-label="Putar contoh ${n}"><div class="vid"><span>${n}<br>(klip asli)</span><video muted loop playsinline preload="none" data-src="${s}.mp4" data-poster="${s}.jpg"></video></div><span class="tag">klip asli</span><span class="play" aria-hidden="true"></span></button><div class="gname"><b>${n}</b><small>${d}</small></div></div>`;
