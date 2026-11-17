@@ -643,7 +643,15 @@ const sticky = $("[data-sticky]"), heroCta = $("[data-herocta]"), pcard = $("[da
 let heroIn = true, hargaIn = false;
 const upd = () => { const on = !heroIn && !hargaIn; sticky.classList.toggle("show", on); sticky.setAttribute("aria-hidden", on ? "false" : "true"); $("a", sticky).tabIndex = on ? 0 : -1; };
 let diIframe = false; try { diIframe = window.self !== window.top; } catch (_) { diIframe = true; }
-if (diIframe) sticky.remove();   /* di dalam iframe (Lynk), position:fixed menempel ke iframe, bukan layar → bilah tidak dipakai */
+if (diIframe) {
+  sticky.remove();   /* di dalam iframe (Lynk), position:fixed menempel ke iframe, bukan layar → bilah tidak dipakai */
+  /* Lynk mengukur tinggi iframe dari scrollHeight yang tidak bisa mengecil → sisa ruang kosong di atas form.
+     Kirim tinggi asli LP (protokol pembungkus Lynk: htmlblock-resize) setelah font siap & tiap isi berubah. */
+  const kirimTinggi = () => { try { parent.postMessage({type: "htmlblock-resize", frameId: window.name, html: Math.ceil(ROOT.getBoundingClientRect().height)}, "*"); } catch (_) {} };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(kirimTinggi);
+  window.addEventListener("load", kirimTinggi); setTimeout(kirimTinggi, 1500); setTimeout(kirimTinggi, 4000);
+  if (window.ResizeObserver) new ResizeObserver(kirimTinggi).observe(ROOT);
+}
 else if (io) {
   new IntersectionObserver(es => es.forEach(e => { heroIn = e.isIntersecting || e.boundingClientRect.top > 0; upd(); })).observe(heroCta);
   new IntersectionObserver(es => es.forEach(e => { hargaIn = e.isIntersecting || e.boundingClientRect.top < 0; upd(); })).observe(pcard);
