@@ -125,6 +125,8 @@ html,body{background:#000;margin:0}
 #ups .tile.playing .play{opacity:0;transform:scale(.8)}
 #ups .snd{position:absolute;right:8px;bottom:8px;z-index:3;display:flex;align-items:center;gap:5px;min-height:36px;padding:6px 11px;border:0;border-radius:999px;background:rgba(0,0,0,.72);color:#fff;font:800 12.5px/1 var(--body);cursor:pointer}
 #ups .snd i{font-style:normal;font-size:14px}
+#ups .tile.segera .tag{background:var(--red);color:#fff}
+#ups .tile.segera video{filter:saturate(.6) brightness(.75)}
 #ups .snd[aria-pressed="true"]{background:var(--red)}
 #ups .tile .tag{top:10px;left:10px}
 #ups .gname{display:grid;gap:1px;padding:0 2px}
@@ -496,7 +498,7 @@ const CONFIG = {
     ["anim-doodle", "Doodle Papan Tulis", "Coretan tangan untuk tips"],
     ["anim-angka", "Infografis Angka", "Angka & hitungan yang hidup"],
     ["anim-benda", "Benda Berkarakter 3D", "Benda clay yang bisa ngomong"],
-    ["clay-motion", "Clay Motion", "Cerita produk animasi clay 3D"]
+    ["clay-motion", "Clay Motion", "Menyusul di update berikutnya", "segera"]   // "segera" = belum ada di paket, tampil dengan label Menyusul
   ],
   animasiSlot: 7,                   // total kotak; sisanya tampil "masuk di update berikutnya"
   // bagian "Yang bikin": foto kosong = tampil huruf awal nama. Kutipan Kevin = DRAF, minta persetujuan Kevin dulu
@@ -505,7 +507,7 @@ const CONFIG = {
     { nama: "Kevin", peran: "Partner Upgradia", foto: "", kutipan: "Yang sering menghambat sales itu kemampuan bikin konten, terutama ngedit. Sekarang mau talking head, karakter AI, atau animasi, output kami bisa 5x lebih banyak." }
   ],
   // add-on di form checkout Lynk (nama & harga HARUS sama dengan add-on di produk Lynk); aktif:false = blok ajakan disembunyikan
-  addon: { aktif: true, nama: "Cara Shoot Konten", harga: 49000, manfaat: "Panduan cara rekam konten pakai HP, biar rekamanmu siap diedit dan hasilnya makin bagus." },
+  addon: { aktif: true, nama: "Cara Shoot Konten", harga: 49000, manfaat: "Hasil edit sebagus apa pun nggak bisa nolong rekaman yang gelap, suaranya bergema, atau gambarnya pecah. Panduan ini ngajarin rekam pakai HP: setting kamera, cahaya, suara, cara ngomong di kamera, sampai rekam banyak video sekali duduk." },
   garansi: true,                    // false kalau Garansi Video Pertama 7 Hari belum disetujui
   wa: "",                           // link WhatsApp, mis. "https://wa.me/62812xxxx?text=Halo%20Upgradia"
   kontak: "@upgradiaidn"
@@ -545,7 +547,7 @@ if (!CONFIG.addon || !CONFIG.addon.aktif) { const ad = $("[data-addon]"); if (ad
 else { $('[data-k="anama"]').textContent = CONFIG.addon.nama; $('[data-k="anama2"]').textContent = CONFIG.addon.nama; $('[data-k="aharga"]').textContent = rb(CONFIG.addon.harga); $('[data-k="amanfaat"]').textContent = CONFIG.addon.manfaat; }
 
 /* galeri gaya edit + animasi */
-const tile = ([s, n, d]) => `<div class="gitem"><div class="tile"><div class="vid"><span>${n}<br>(klip asli)</span><video muted loop playsinline preload="none" data-src="${s}.mp4" data-poster="${s}.jpg" data-auto aria-label="Contoh ${n}"></video></div><span class="tag">klip asli</span><button class="snd" type="button" data-snd aria-pressed="false" aria-label="Nyalakan suara ${n}"><i>🔇</i>Suara</button></div><div class="gname"><b>${n}</b><small>${d}</small></div></div>`;
+const tile = ([s, n, d, segera]) => `<div class="gitem"><div class="tile${segera ? " segera" : ""}"><div class="vid"><span>${n}<br>(klip asli)</span><video muted loop playsinline preload="none" data-src="${s}.mp4" data-poster="${s}.jpg" data-auto aria-label="Contoh ${n}"></video></div><span class="tag">${segera ? "Menyusul" : "klip asli"}</span><button class="snd" type="button" data-snd aria-pressed="false" aria-label="Nyalakan suara ${n}"><i>🔇</i>Suara</button></div><div class="gname"><b>${n}</b><small>${d}</small></div></div>`;
 $("[data-gal]").innerHTML = CONFIG.gaya.map(tile).join("");
 const slots = Math.max(CONFIG.animasiSlot - CONFIG.animasi.length, 0);
 $("[data-anim]").innerHTML = CONFIG.animasi.map(tile).join("") + Array.from({length: slots}, () => `<div class="slot"><i>+</i><b>Animasi baru</b><small>Masuk di update berikutnya</small></div>`).join("");
