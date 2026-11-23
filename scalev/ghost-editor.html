@@ -584,7 +584,7 @@ html.vpop-on{overflow:hidden}
     <div class="prow"><span>Harga normal</span><s data-cfg="normal">Rp297rb</s></div>
     <div class="pbig"><small>Harga hari ini</small><b data-cfg="jual">Rp147rb</b><span>Sekali bayar. Update paket gratis.</span></div>
     <p class="lnote">Yang beli sekarang tetap dapat semua update tanpa bayar lagi.</p>
-    <a class="btn" data-buy href="#ups-order" data-cfg="ctaharga">Ya, aku mau ngedit pakai AI ↓</a>
+    <a class="btn" data-buy href="#ups-order" data-cfg="ctaharga">Ya, saya mau ngedit pakai AI ↓</a>
     <div class="assure">
       <div data-g><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path class="r" d="M8.5 12l2.5 2.5 4.5-5"/></svg><span><b data-k="gjudul2">Garansi 7 Hari Uang Kembali</b></span></div>
       <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path class="r" d="M3 7l9 6 9-6"/></svg><span><b>File dikirim ke email.</b> Pastikan emailmu benar, lalu cek inbox atau folder spam.</span></div>
@@ -661,7 +661,7 @@ html.vpop-on{overflow:hidden}
     </div>
 
     <div class="omsg" data-o="msg" hidden></div>
-    <button class="btn obtn" type="submit" data-o="kirim"><span class="spin" aria-hidden="true"></span><span data-o="ktext">Bayar Sekarang</span></button>
+    <button class="btn obtn" type="submit" data-o="kirim"><span class="spin" aria-hidden="true"></span><span data-o="ktext">Saya Ambil Sekarang</span></button>
 
     <div class="otrust">
       <div data-g>🛡️ <span><b data-k="gjudul3">Garansi 7 Hari Uang Kembali</b></span></div>
@@ -682,7 +682,7 @@ html.vpop-on{overflow:hidden}
   <button type="button" class="vpx" data-vpx aria-label="Tutup video"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></button>
   <div class="vpf"><video playsinline loop controls controlslist="nodownload noplaybackrate" disablepictureinpicture preload="none"></video></div>
   <p class="vpt"><b data-vp="nama"></b><small data-vp="ket"></small></p>
-  <a class="btn" href="#ups-order" data-buy data-cfg="ctavideo">Aku mau hasil kayak gini →</a>
+  <a class="btn" href="#ups-order" data-buy data-cfg="ctavideo">Saya mau hasil kayak gini →</a>
 </div></div>
 
 <div id="ups-end" aria-hidden="true"></div>
@@ -760,8 +760,10 @@ const CONFIG = {
   cta: {
     bilahJudul: "Bikin konten AI pertamamu",                         // bilah bawah, baris besar
     bilahSub: "5x lebih banyak, tanpa begadang ngedit",       // bilah bawah, baris kecil (senada headline hero)
-    harga: "Ya, aku mau ngedit pakai AI ↓",                     // tombol di kartu harga (maks ±30 huruf supaya 1 baris di HP). Alternatif: "Ya, aku mau ambil promonya ↓"
-    video: "Aku mau hasil kayak gini →"                              // tombol di popup video
+    harga: "Ya, saya mau ngedit pakai AI ↓",                    // tombol di kartu harga (maks ±30 huruf supaya 1 baris di HP). Alternatif: "Ya, saya mau ambil promonya ↓"
+    video: "Saya mau hasil kayak gini →",                            // tombol di popup video
+    bayar: "Saya Ambil Sekarang"                                     // tombol kirim form
+    // ATURAN My Lord (23 Nov 2026): semua CTA TANPA harga, kalimat orang pertama ("Saya ..."). Total tetap tampil di ringkasan form
   },
   wa: "",                           // link WhatsApp, mis. "https://wa.me/62812xxxx?text=Halo%20Upgradia"
   kontak: "@upgradiaidn"
@@ -980,7 +982,7 @@ let S = null, toko = null, vUtama = null, vAddon = null, hUtama = CONFIG.hargaJu
 let bayar = "", pakaiLink = false, pratinjau = true, sedang = false, terkirim = false, estKe = 0, atc = false;
 const pakaiAddon = () => !!(A.aktif && O("addon") && O("addon").checked && (pratinjau || vAddon));
 const itemList = () => { const it = [{ type: "product", variantUniqueId: vUtama.uniqueId, quantity: 1 }]; if (pakaiAddon() && vAddon) it.push({ type: "product", variantUniqueId: vAddon.uniqueId, quantity: 1 }); return it; };
-const teksTombol = t => "Bayar Sekarang · " + rp(t);
+const teksTombol = () => (CONFIG.cta && CONFIG.cta.bayar) || "Saya Ambil Sekarang";   // tanpa harga (aturan My Lord); total tetap tampil di ringkasan di atas tombol
 function lacakATC(){
   if (atc || pratinjau || !S || !S.analytics || !S.analytics.track) return; atc = true;
   try { S.analytics.track("facebook", { events: [{ eventName: "AddToCart", parameters: { content_name: CONFIG.produk.nama, value: hUtama, currency: "IDR" } }] }); } catch (_) {}
