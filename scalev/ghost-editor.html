@@ -1009,10 +1009,20 @@ else {
    - di luar Scalev (pratinjau lokal) form tampil tapi tidak membuat pesanan */
 const O = k => $(`[data-o="${k}"]`, form);
 const msg = (teks, jenis) => { const m = O("msg"); if (!teks) { m.hidden = true; m.textContent = ""; return; } m.hidden = false; m.className = "omsg " + (jenis || "info"); m.textContent = teks; };
-let S = null, toko = null, vUtama = null, vAddon = null, hUtama = CONFIG.hargaJual, hAddon = A.harga || 0;
+let S = null, toko = null, vUtama = null, vAddon = null, vBundel = null, hUtama = CONFIG.hargaJual, hAddon = A.harga || 0, hNormal = CONFIG.hargaCoret || 0;
 let bayar = "", pakaiLink = false, pratinjau = true, sedang = false, terkirim = false, estKe = 0, atc = false;
 const pakaiAddon = () => !!(A.aktif && O("addon") && O("addon").checked && (pratinjau || vAddon));
-const itemList = () => { const it = [{ type: "product", variantUniqueId: vUtama.uniqueId, quantity: 1 }]; if (pakaiAddon() && vAddon) it.push({ type: "product", variantUniqueId: vAddon.uniqueId, quantity: 1 }); return it; };
+/* produk utama dipesan lewat BUNDEL Scalev kalau ada (harga promo), kalau tidak lewat varian produk */
+const itemUtama = () => vBundel ? { type: "bundle", bundlePriceOptionUniqueId: vBundel.uniqueId, quantity: 1 } : { type: "product", variantUniqueId: vUtama.uniqueId, quantity: 1 };
+const itemList = () => { const it = [itemUtama()]; if (pakaiAddon() && vAddon) it.push({ type: "product", variantUniqueId: vAddon.uniqueId, quantity: 1 }); return it; };
+/* cari opsi harga bundel yang namanya memuat nama produk (cek beberapa kemungkinan nama field) */
+function cariBundel(nama){
+  const list = (toko && Array.isArray(toko.bundlePriceOptions)) ? toko.bundlePriceOptions : [];
+  const n = s => String(s || "").toLowerCase(), mau = n(nama);
+  const teks = b => [b.name, b.publicName, b.bundleName, b.displayName, b.bundle && b.bundle.name, b.bundle && b.bundle.publicName].map(n).join(" | ");
+  const b = list.find(b => teks(b).includes(mau)) || (list.length === 1 ? list[0] : null);
+  return b && b.uniqueId ? Object.assign({}, b, { price: Number(b.price) }) : null;
+}
 const teksTombol = () => (CONFIG.cta && CONFIG.cta.bayar) || "Saya Ambil Sekarang";   // tanpa harga (aturan My Lord); total tetap tampil di ringkasan di atas tombol
 function lacakATC(){
   if (atc || pratinjau || !S || !S.analytics || !S.analytics.track) return; atc = true;
@@ -1034,9 +1044,10 @@ function renderBayar(){
   if (!opsi.length) { wrap.hidden = true; bayar = ""; return; }
   box.innerHTML = opsi.map(o => `<label class="pay"><input type="radio" name="pay" value="${esc(o.value)}">${o.logoUrl ? `<img src="${esc(o.logoUrl)}" alt="" loading="lazy">` : ""}<span>${esc(o.display || o.value)}</span></label>`).join("");
 }
-/* diskon & hemat: hanya dari harga coret yang disetujui (CONFIG.hargaCoret, CONFIG.addon.hargaCoret) */
+/* diskon & hemat: harga normal = harga produk di Scalev (isi bundel) bila lebih tinggi dari harga bundel,
+   cadangan CONFIG.hargaCoret. Add-on hanya dari CONFIG.addon.hargaCoret yang disetujui */
 function hemat(add){
-  const dU = Math.max(0, (CONFIG.hargaCoret || 0) - hUtama);
+  const dU = Math.max(0, (hNormal || 0) - hUtama);
   const dA = add && A.hargaCoret > hAddon ? A.hargaCoret - hAddon : 0;
   const tot = dU + dA;
   O("shemat").hidden = tot <= 0; O("shematv").textContent = rp(tot);
@@ -1045,10 +1056,10 @@ function isiKartu(){
   const P2 = CONFIG.produk || {};
   if (P2.tagline) O("ptag").textContent = P2.tagline; else O("ptag").remove();
   O("pisi").innerHTML = (P2.isi || []).map(t => `<li>${esc(t)}</li>`).join(""); if (!(P2.isi || []).length) O("pisi").remove();
-  const dU = Math.max(0, (CONFIG.hargaCoret || 0) - hUtama);
+  const dU = Math.max(0, (hNormal || 0) - hUtama);
   O("pnormwrap").hidden = dU <= 0;
-  O("hemat").hidden = dU <= 0; O("hemat").textContent = "Hemat " + Math.floor(dU / CONFIG.hargaCoret * 100) + "%";
-  O("snormket").hidden = dU <= 0; O("sharga").textContent = rp(dU > 0 ? CONFIG.hargaCoret : hUtama);
+  O("hemat").hidden = dU <= 0; O("hemat").textContent = "Hemat " + Math.floor(dU / hNormal * 100) + "%";
+  O("snormket").hidden = dU <= 0; O("sharga").textContent = rp(dU > 0 ? hNormal : hUtama);
   O("srowdisk").hidden = dU <= 0; O("sdisk").textContent = "−" + rp(dU);
   const ac = O("acoret"); if (ac) { ac.hidden = !(A.hargaCoret > hAddon); ac.textContent = rb(A.hargaCoret || 0); }
 }
@@ -1060,7 +1071,7 @@ async function hitung(){
   const t = hUtama + (add ? hAddon : 0);
   O("srowfee").hidden = true; O("stot").textContent = rp(t);
   if (!sedang && !terkirim) O("ktext").textContent = teksTombol(t);
-  if (pratinjau || !bayar || !vUtama || !S || !S.checkout || !S.checkout.estimateSummary) return;
+  if (pratinjau || !bayar || (!vUtama && !vBundel) || !S || !S.checkout || !S.checkout.estimateSummary) return;
   const ke = ++estKe;
   try {
     const r = await S.checkout.estimateSummary({ items: itemList(), paymentMethod: bayar });
@@ -1105,7 +1116,7 @@ form.addEventListener("submit", async e => {
   const c = cekForm();
   if (!c) { const bad = $('[aria-invalid="true"]', form); if (bad) bad.focus(); return; }
   if (pratinjau) { msg("Mode pratinjau: form ini belum tersambung ke toko Scalev, jadi belum ada pesanan yang dibuat. Setelah dipasang di Scalev, tombol ini langsung membuat pesanan.", "info"); return; }
-  if (!vUtama) { msg("Produk belum tersambung ke toko. Hubungi kami ya.", "bad"); return; }
+  if (!vUtama && !vBundel) { msg("Produk belum tersambung ke toko. Hubungi kami ya.", "bad"); return; }
   const btn = O("kirim"); sedang = true; btn.disabled = true; O("ktext").textContent = "Memproses…";
   try {
     try { if (S.prefill && S.prefill.save) Promise.resolve(S.prefill.save({ customer: c }, { source: "checkout_form" })).catch(() => {}); } catch (_) {}
@@ -1134,9 +1145,17 @@ function mulaiForm(){
     if (!vUtama && toko.products && toko.products[0] && toko.products[0].variants) { const p = toko.products[0]; vUtama = Object.assign({}, p.variants[0], { produk: p.name, price: Number(p.variants[0].price) }); }
     vAddon = A.aktif ? cari(A.nama) : null;
     pakaiLink = toko.isPaymentLinkEnabled === true;
-    if (vUtama && vUtama.price > 0) hUtama = vUtama.price;
+    vBundel = cariBundel(CONFIG.produk.nama);
+    if (vBundel && vBundel.price > 0) {
+      // harga yang dibayar = harga bundel; harga normal (coret) = harga produk di Scalev kalau lebih tinggi
+      if (vUtama && vUtama.price > vBundel.price) hNormal = vUtama.price;
+      hUtama = vBundel.price;
+      if (hNormal !== CONFIG.hargaCoret && hNormal > hUtama) {   // samakan teks harga normal/hemat di seluruh halaman dengan Scalev
+        $$('[data-cfg="normal"]').forEach(el => el.textContent = rb(hNormal)); $$('[data-cfg="hemat"]').forEach(el => el.textContent = rb(hNormal - hUtama));
+      }
+    } else if (vUtama && vUtama.price > 0) hUtama = vUtama.price;
     if (vAddon && vAddon.price > 0) hAddon = vAddon.price;
-    if (vUtama && hUtama !== CONFIG.hargaJual) console.warn("[Ghost Editor] harga di Scalev", hUtama, "≠ CONFIG.hargaJual", CONFIG.hargaJual);
+    if (hUtama !== CONFIG.hargaJual) console.warn("[Ghost Editor] harga di Scalev", hUtama, "≠ CONFIG.hargaJual", CONFIG.hargaJual);
     if (A.aktif && !vAddon) { const b = $("[data-bump]", form); if (b) b.remove(); console.warn("[Ghost Editor] produk add-on tidak ditemukan di toko:", A.nama); }
     /* isi otomatis nama/HP/email dari kunjungan sebelumnya (cookie Scalev), hanya kolom yang masih kosong */
     try {
