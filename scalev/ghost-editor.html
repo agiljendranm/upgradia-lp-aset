@@ -7,15 +7,17 @@
 <meta name="description" content="Bikin konten 5x lebih banyak tanpa begadang ngedit. Kamu rekam, Claude yang editin. 23 gaya edit + 9 template animasi + update gratis.">
 <meta property="og:title" content="Bikin konten 5x lebih banyak tanpa begadang ngedit · Ghost Editor by Upgradia">
 <meta property="og:description" content="Kamu rekam, Claude yang editin. 23 gaya edit + 9 template animasi tanpa wajah + update gratis untuk pembeli.">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/agiljendranm/upgradia-lp-aset@v3/upgradia-styles/og-thumbnail.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/agiljendranm/upgradia-lp-aset@v4/upgradia-styles/og-thumbnail.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* LP Ghost Editor v5 · versi Scalev (HTML Checkout Page) · 23 Nov 2026
-   Dasar: LP Lynk v4.10. Tambahan: form pesan di halaman yang sama (window.Scalev.checkout.createOrder), tombol beli melayang,
-   popup info/pesanan asli, 9 animasi, tampilan The Perfect Shot, kartu "Yang bikin" berfoto.
+/* LP Ghost Editor v6 · versi Scalev (HTML Checkout Page) · 23 Nov 2026
+   Dasar: LP Lynk v4.10. Tambahan: form pesan di halaman yang sama (window.Scalev.checkout.createOrder), 9 animasi,
+   tampilan The Perfect Shot, kartu "Yang bikin" dengan foto kotak kecil.
+   v6 (acuan motionformat.com): bilah beli selebar layar di bawah (muncul setelah hero, hilang di area harga & form),
+   popup video saat klip diketuk, popup pembeli hanya dari pesanan asli, nomor HP dikirim format 08…, isi otomatis Scalev.
    Desain: hitam pekat, putih, merah. Baloo 2 + Plus Jakarta Sans. Merah hanya untuk keputusan & penekanan. */
 :root{
   --bg:#000; --s1:#101010; --s2:#191919; --line:#303030;
@@ -165,24 +167,23 @@ p{margin:0}
 .engine{margin-top:16px;font-size:14px}
 .engine b{color:#fff}
 
-/* pembuat: kartu foto besar */
-.duo{display:grid;gap:22px;margin-top:26px}
-.person{margin:0;position:relative;border-radius:28px;overflow:hidden;background:var(--s1);border:1px solid var(--line);isolation:isolate}
+/* pembuat: kartu dengan foto kotak kecil (foto profil IG 150 px, jadi sengaja ditampilkan kecil) */
+.duo{display:grid;gap:16px;margin-top:26px}
+.person{margin:0;position:relative;padding:20px 20px 22px;border-radius:24px;background:radial-gradient(120% 70% at 0% 0%,#1d0a0e,var(--s1) 55%);border:1px solid var(--line);display:grid;gap:16px;isolation:isolate}
 .person::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:linear-gradient(160deg,var(--red2),transparent 38%,transparent 62%,#ffffff55);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:4}
-.pfoto{position:relative;aspect-ratio:4/4.4;background:radial-gradient(120% 90% at 50% 10%,#2a0b11,#0b0b0b 70%);display:grid;place-items:center;overflow:hidden}
-.pfoto>i{font:800 120px/1 var(--disp);font-style:normal;color:#ffffff14}
-.pfoto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 32%;transform:scale(1.02);transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
-.person:hover .pfoto img{transform:scale(1.06)}
-.pfoto::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.55) 72%,#101010 100%)}
-.pfoto::after{content:"";position:absolute;inset:0;z-index:2;opacity:.16;mix-blend-mode:overlay;background:repeating-radial-gradient(circle at 30% 20%,#fff 0 1px,transparent 1px 3px)}
-.prec{position:absolute;left:14px;top:14px;z-index:3;display:flex;align-items:center;gap:7px;font:800 11px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.6);padding:8px 10px;border-radius:999px;backdrop-filter:blur(6px)}
+.phead{display:flex;align-items:center;gap:16px}
+.pfoto{position:relative;flex:none;width:92px;aspect-ratio:3/4;border-radius:18px;overflow:hidden;background:radial-gradient(120% 90% at 50% 10%,#2a0b11,#0b0b0b 70%);display:grid;place-items:center;box-shadow:0 0 0 2px var(--red),0 12px 30px rgba(223,36,56,.28);transform:rotate(-3deg)}
+.person:nth-child(2) .pfoto{transform:rotate(3deg)}
+.pfoto>i{font:800 44px/1 var(--disp);font-style:normal;color:#ffffff22}
+.pfoto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pname{display:grid;gap:8px;min-width:0}
+.pname b{font:800 clamp(34px,9vw,42px)/.95 var(--disp);color:#fff;letter-spacing:-.02em}
+.prole{justify-self:start;font:800 11.5px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;background:var(--red);color:#fff;padding:7px 10px;border-radius:8px}
+.prec{display:flex;align-items:center;gap:7px;font:800 11px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
 .prec::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red2);box-shadow:0 0 0 3px #df243855;animation:blink 1.4s infinite}
 @keyframes blink{50%{opacity:.25}}
-.pname{position:absolute;left:18px;right:18px;bottom:14px;z-index:3;display:grid;gap:6px}
-.pname b{font:800 clamp(38px,10vw,48px)/.95 var(--disp);color:#fff;letter-spacing:-.02em;text-shadow:0 4px 24px rgba(0,0,0,.6)}
-.pname span{justify-self:start;font:800 12px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;background:var(--red);color:#fff;padding:7px 10px;border-radius:8px}
-.pbody{position:relative;z-index:3;padding:6px 20px 22px;display:grid;gap:14px}
-.quote{position:relative;margin:0;padding-top:30px;font:700 clamp(20px,5.2vw,24px)/1.38 var(--disp);color:#fff}
+.pbody{display:grid;gap:14px}
+.quote{position:relative;margin:0;padding-top:26px;font:700 clamp(19px,5vw,23px)/1.38 var(--disp);color:#fff}
 .quote::before{content:"\201C";position:absolute;left:-4px;top:-14px;font:800 84px/1 var(--disp);color:var(--red)}
 .ptags{display:flex;flex-wrap:wrap;gap:6px}
 .ptags span{font:700 12.5px/1 var(--body);color:var(--txt);border:1px solid #3a3a3a;background:#0b0b0b;padding:8px 10px;border-radius:999px}
@@ -262,22 +263,49 @@ p{margin:0}
 .otrust div{display:flex;gap:8px;align-items:center}
 .otrust b{color:#fff}
 
-/* tombol beli melayang */
-.fab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:45;display:flex;align-items:center;gap:10px;min-height:56px;padding:8px 10px 8px 18px;border-radius:999px;background:var(--red);color:#fff;text-decoration:none;font:800 15px/1.1 var(--body);box-shadow:0 10px 30px rgba(223,36,56,.45),0 4px 0 #710E1C;transform:translateY(140%);transition:transform .25s cubic-bezier(.3,.7,.2,1)}
-.fab.show{transform:none}
-.fab small{display:block;font:600 11.5px/1.1 var(--body);opacity:.85}
-.fab i{width:40px;height:40px;flex:none;border-radius:50%;background:#fff;color:var(--red);display:grid;place-items:center;font-style:normal;font-size:18px}
-.fab.show i{animation:nudge 2.6s ease-in-out infinite}
-@keyframes nudge{0%,80%,100%{transform:none}86%{transform:translateY(-3px)}92%{transform:translateY(1px)}}
+/* bilah beli melayang (acuan motionformat.com): selebar layar di bawah, harga + tombol.
+   Garis merah di tepi atas = posisi baca halaman, seperti timeline editor */
+.sbar{position:fixed;left:0;right:0;bottom:0;z-index:45;background:rgba(8,8,8,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:2px solid #262626;padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(115%);transition:transform .3s cubic-bezier(.3,.7,.2,1)}
+.sbar::before{content:"";position:absolute;left:0;top:-2px;height:2px;width:calc(var(--p,0) * 100%);background:var(--red);box-shadow:0 0 10px var(--red)}
+.sbar.show{transform:none}
+.sbin{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:14px}
+.sbinfo{display:grid;gap:3px;min-width:0}
+.sbprice{display:flex;align-items:baseline;gap:8px}
+.sbprice s{font:700 13px/1 var(--body);color:#8a8a8a;text-decoration-color:var(--red2)}
+.sbprice b{font:800 25px/1 var(--disp);color:#fff}
+.sbinfo small{font:600 12.5px/1.2 var(--body);color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbbtn{margin-left:auto;flex:none;display:inline-flex;align-items:center;gap:8px;min-height:50px;padding:0 20px;border-radius:999px;background:var(--red);color:#fff;font:800 16px/1 var(--body);text-decoration:none;box-shadow:0 4px 0 #710E1C;transition:transform .14s,box-shadow .14s,background .14s}
+.sbbtn:hover{background:var(--redp)}
+.sbbtn:active{transform:translateY(2px);box-shadow:0 2px 0 #710E1C}
+.sbbtn i{font-style:normal}
+.sbar.show .sbbtn i{animation:nudge 2.6s ease-in-out infinite}
+@keyframes nudge{0%,80%,100%{transform:none}86%{transform:translateX(3px)}92%{transform:translateX(-1px)}}
 
-/* popup info / pesanan */
-.toast{position:fixed;left:12px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:44;max-width:min(330px,calc(100% - 24px));display:flex;gap:12px;align-items:center;padding:12px 38px 12px 12px;border-radius:18px;background:rgba(16,16,16,.96);border:1px solid #3a3a3a;box-shadow:0 14px 40px rgba(0,0,0,.6);transform:translateY(16px);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
+/* popup pembeli: HANYA dari pesanan asli (kosong = tidak muncul). Kartu putih supaya kontras di halaman hitam */
+.toast{position:fixed;left:12px;bottom:calc(88px + env(safe-area-inset-bottom));z-index:44;width:min(320px,calc(100% - 24px));display:flex;gap:12px;align-items:center;padding:10px 36px 10px 10px;border-radius:16px;background:#fff;box-shadow:0 4px 0 #a9a9a9,0 18px 40px rgba(0,0,0,.55);transform:translateY(16px) scale(.98);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
 .toast.show{opacity:1;transform:none;pointer-events:auto}
-.toast .tico{width:42px;height:42px;flex:none;border-radius:12px;background:var(--redd);border:1px solid #5a1a24;display:grid;place-items:center;font-size:20px}
-.toast p{font-size:13.5px;line-height:1.35;color:var(--txt)}
-.toast p b{color:#fff}
-.toast p small{display:block;font-size:11.5px;color:var(--mut);margin-top:2px}
-.toast button{position:absolute;right:6px;top:6px;width:28px;height:28px;border:0;border-radius:50%;background:transparent;color:#8a8a8a;font-size:18px;line-height:1;cursor:pointer}
+.toast .tav{width:44px;height:44px;flex:none;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font:800 19px/1 var(--disp)}
+.toast p{font-size:13.5px;line-height:1.35;color:#333}
+.toast p b{color:#000}
+.toast p small{display:block;font-size:11.5px;color:#777;margin-top:2px}
+.toast button{position:absolute;right:6px;top:6px;width:28px;height:28px;border:0;border-radius:50%;background:transparent;color:#999;font-size:18px;line-height:1;cursor:pointer}
+
+/* popup video (acuan motionformat.com): klip diketuk → tampil besar dengan suara */
+html.vpop-on{overflow:hidden}
+.vpop{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:66px 16px calc(18px + env(safe-area-inset-bottom));background:rgba(0,0,0,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);animation:vpIn .25s ease}
+.vpop[hidden]{display:none}
+.vpb{position:relative;width:min(100%,380px,calc((100vh - 250px) * .5625));width:min(100%,380px,calc((100dvh - 250px) * .5625));display:grid;gap:12px;animation:vpUp .32s cubic-bezier(.2,.9,.3,1.15)}
+.vpf{position:relative;aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:#000;box-shadow:0 0 0 2px #fff,0 30px 60px -20px rgba(0,0,0,.8)}
+.vpf video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
+.vpx{position:absolute;right:0;top:-54px;width:42px;height:42px;border-radius:50%;border:0;padding:0;background:#fff;color:#000;display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 0 #9a9a9a;transition:transform .2s}
+.vpx:hover{transform:rotate(90deg)}
+.vpx svg{width:18px;height:18px}
+.vpt{display:grid;gap:2px;text-align:center}
+.vpt b{font:800 20px/1.2 var(--disp);color:#fff}
+.vpt small{font-size:13px;color:var(--mut)}
+.vpb .btn{min-height:50px}
+@keyframes vpIn{from{opacity:0}}
+@keyframes vpUp{from{opacity:0;transform:translateY(16px) scale(.97)}}
 
 /* kebutuhan + faq */
 .need{display:grid;gap:0;padding:6px 18px;margin-top:20px}
@@ -389,14 +417,12 @@ p{margin:0}
   .gitem{width:calc(25% - 9px)}
   .rail{padding-left:max(20px,calc((100vw - 1040px)/2));padding-right:20px}
   .rail>*{width:200px}
-  .duo{grid-template-columns:1fr 1fr}
-  .duo .person:nth-child(1){transform:rotate(-1.2deg)}
-  .duo .person:nth-child(2){transform:rotate(1.2deg);margin-top:34px}
+  .duo{grid-template-columns:1fr 1fr;align-items:start}
+  .duo .person:nth-child(2){margin-top:28px}
   .tps{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
   .tpsvis{height:auto;min-height:380px}
   .ocard{padding:28px 26px}
-  .toast{bottom:24px;left:20px}
-  .fab{right:24px;bottom:24px}
+  .toast{bottom:96px;left:20px}
 }
 @media (min-width:980px){
   .hgrid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px}
@@ -465,7 +491,7 @@ p{margin:0}
   <div class="shead">
     <span class="label r">Contoh hasil</span>
     <h2>1 rekaman.<br><span class="ul">7 rasa editan.</span></h2>
-    <p class="sub mut">7 contoh dari 23 gaya. Semua dari 1 rekaman HP. Ketuk 🔇 untuk menyalakan suara.</p>
+    <p class="sub mut">7 contoh dari 23 gaya. Semua dari 1 rekaman HP. Ketuk klipnya untuk nonton besar dengan suara.</p>
   </div>
   <div class="gal" data-gal></div>
   <div class="after"><a class="btn2" href="#ups-paket">Lihat isi paket &amp; harga ↓</a></div>
@@ -649,8 +675,17 @@ p{margin:0}
 
 </main>
 
-<a class="fab" href="#ups-order" data-fab aria-hidden="true" tabindex="-1"><span>Beli sekarang<small data-cfg="jual2">Rp147rb · sekali bayar</small></span><i aria-hidden="true">→</i></a>
-<div class="toast" data-toast role="status" aria-live="polite"><span class="tico" data-t="ico">🎬</span><p data-t="txt"></p><button type="button" data-t="tutup" aria-label="Tutup">×</button></div>
+<div class="sbar" data-sbar aria-hidden="true"><div class="sbin">
+  <div class="sbinfo"><span class="sbprice"><s data-cfg="normal">Rp297rb</s><b data-cfg="jual">Rp147rb</b></span><small data-cfg="sbnama">Ghost Editor · sekali bayar</small></div>
+  <a class="sbbtn" href="#ups-order" data-buy tabindex="-1">Beli sekarang <i aria-hidden="true">→</i></a>
+</div></div>
+<div class="toast" data-toast role="status" aria-live="polite"><span class="tav" data-t="ico" aria-hidden="true"></span><p data-t="txt"></p><button type="button" data-t="tutup" aria-label="Tutup">×</button></div>
+<div class="vpop" data-vpop hidden role="dialog" aria-modal="true" aria-label="Pemutar video"><div class="vpb">
+  <button type="button" class="vpx" data-vpx aria-label="Tutup video"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></button>
+  <div class="vpf"><video playsinline loop controls controlslist="nodownload noplaybackrate" disablepictureinpicture preload="none"></video></div>
+  <p class="vpt"><b data-vp="nama"></b><small data-vp="ket"></small></p>
+  <a class="btn" href="#ups-order" data-buy>Mau hasil kayak gini · <span data-cfg="jual">Rp147rb</span></a>
+</div></div>
 
 <div id="ups-end" aria-hidden="true"></div>
 </div>
@@ -659,9 +694,9 @@ p{margin:0}
 (function(){
 /* ====== PENGATURAN: ubah di sini saja ====== */
 const CONFIG = {
-  // klip & gambar: repo publik GitHub agiljendranm/upgradia-lp-aset lewat jsDelivr (tag v3).
+  // klip & gambar: repo publik GitHub agiljendranm/upgradia-lp-aset lewat jsDelivr (tag v4 = v3 + foto agil.jpg & kevin.jpg).
   // Di Scalev: izinkan cdn.jsdelivr.net di CSP (img_src + media_src), fonts.googleapis.com (style_src), fonts.gstatic.com (font_src)
-  mediaBase: "https://cdn.jsdelivr.net/gh/agiljendranm/upgradia-lp-aset@v3/upgradia-styles/",
+  mediaBase: "https://cdn.jsdelivr.net/gh/agiljendranm/upgradia-lp-aset@v4/upgradia-styles/",
   mediaCadangan: "",                // alamat cadangan kalau mediaBase gagal dimuat; kosong = tanpa cadangan
   hargaJual: 147000,                // harga yang dibayar. Harga asli di form diambil dari varian produk Scalev (kalau beda, yang tampil harga Scalev)
   hargaCoret: 297000,               // harga normal yang benar-benar dipakai nanti (bukan angka pemanis)
@@ -711,7 +746,7 @@ const CONFIG = {
   ],
   // garansi: "hasil" = uang kembali kalau video pertama belum jadi (bersyarat, tanpa Zoom) · "puas" = puas atau uang kembali · false = tanpa garansi
   garansi: "hasil",
-  // popup kiri bawah: HANYA fakta produk + pesanan ASLI (aturan tim: tanpa nama/angka karangan)
+  // popup kiri bawah: HANYA pesanan ASLI (aturan tim: tanpa nama/angka karangan). Daftar kosong = popup tidak muncul sama sekali
   popup: {
     aktif: true,
     mulai: 7000, tampil: 5500, jeda: 11000,     // milidetik: muncul pertama · lama tampil · jarak antar popup
@@ -719,14 +754,10 @@ const CONFIG = {
     // { nama: "Agil Jendran", kota: "Semarang", waktu: "2026-11-25T10:15:00+07:00", addon: true }
     pesanan: [],
     pesananUrl: "",                             // opsional: URL JSON berisi daftar yang sama (mis. raw GitHub) supaya bisa diperbarui tanpa menempel ulang kode. Izinkan domainnya di CSP connect_src
-    info: [
-      ["🎬", "<b>23 gaya edit</b> dari 1 rekaman HP", "Semua contoh di halaman ini hasil asli"],
-      ["🧸", "<b>9 template animasi</b> tanpa wajah sudah termasuk", "Cerita, doodle, benda 3D, sejarah, dan lainnya"],
-      ["📩", "<b>File dikirim ke email</b> setelah bayar", "Dipandu video dari nol sampai jadi"],
-      ["🔁", "<b>Update gaya baru gratis</b>", "Beli sekali, ikut dapat terus"]
-    ]
+    // fakta produk di sela pesanan asli: [ikon, teks, keterangan]. Sengaja dikosongkan (Motion Format juga tanpa popup fakta)
+    info: []
   },
-  fab: true,                        // tombol beli melayang (kanan bawah)
+  fab: true,                        // bilah beli melayang selebar layar di bawah
   wa: "",                           // link WhatsApp, mis. "https://wa.me/62812xxxx?text=Halo%20Upgradia"
   kontak: "@upgradiaidn"
 };
@@ -770,7 +801,7 @@ const GAR = {
 const G = GAR[CONFIG.garansi] || null;
 
 /* isi teks dari CONFIG */
-const CFG = { jual: rb(CONFIG.hargaJual), normal: rb(CONFIG.hargaCoret), hemat: rb(CONFIG.hargaCoret - CONFIG.hargaJual), jual2: rb(CONFIG.hargaJual) + " · sekali bayar", kontak: CONFIG.kontak };
+const CFG = { jual: rb(CONFIG.hargaJual), normal: rb(CONFIG.hargaCoret), hemat: rb(CONFIG.hargaCoret - CONFIG.hargaJual), sbnama: CONFIG.produk.nama + " · sekali bayar", kontak: CONFIG.kontak };
 $$("[data-cfg]").forEach(el => { const v = CFG[el.dataset.cfg]; if (v !== undefined) el.textContent = v; });
 if (CONFIG.wa) $$("[data-wa]").forEach(a => { a.hidden = false; a.href = CONFIG.wa; a.target = "_blank"; a.rel = "noopener"; });
 if (!G) $$("[data-g]").forEach(el => el.remove());
@@ -781,12 +812,12 @@ else { ["anama", "anama2", "anama3", "anama4"].forEach(k => setK(k, A.nama)); se
 setK("anjml", CONFIG.animasi.length);
 
 /* galeri gaya edit + animasi */
-const tile = ([s, n, d]) => `<div class="gitem"><div class="tile"><div class="vid"><span>${n}<br>(klip asli)</span><video muted loop playsinline preload="none" data-src="${s}.mp4" data-poster="${s}.jpg" data-auto aria-label="Contoh ${n}"></video></div><span class="tag">klip asli</span><button class="snd" type="button" data-snd aria-pressed="false" aria-label="Nyalakan suara ${n}"><i>🔇</i>Suara</button></div><div class="gname"><b>${n}</b><small>${d}</small></div></div>`;
+const tile = ([s, n, d]) => `<div class="gitem"><div class="tile"><div class="vid"><span>${n}<br>(klip asli)</span><video muted loop playsinline preload="none" data-src="${s}.mp4" data-poster="${s}.jpg" data-auto aria-label="Contoh ${n}"></video></div><span class="tag">klip asli</span><button class="snd" type="button" data-play aria-label="Tonton ${n} dengan suara"><i>▶</i>Tonton</button></div><div class="gname"><b>${n}</b><small>${d}</small></div></div>`;
 $("[data-gal]").innerHTML = CONFIG.gaya.map(tile).join("");
 $("[data-anim]").innerHTML = CONFIG.animasi.map(tile).join("");
 
 /* yang bikin */
-$("[data-pembuat]").innerHTML = CONFIG.pembuat.map(p => `<figure class="person"><div class="pfoto"><i aria-hidden="true">${esc(p.nama.charAt(0))}</i>${p.foto ? `<img data-img="${esc(p.foto)}" alt="Foto ${esc(p.nama)}">` : ""}<span class="prec">Dipakai tiap hari</span><div class="pname"><b>${esc(p.nama)}</b><span>${esc(p.peran)}</span></div></div><div class="pbody"><blockquote class="quote">${esc(p.kutipan)}</blockquote><div class="ptags">${(p.pakai || []).map(t => `<span>${esc(t)}</span>`).join("")}</div></div></figure>`).join("");
+$("[data-pembuat]").innerHTML = CONFIG.pembuat.map(p => `<figure class="person"><div class="phead"><div class="pfoto"><i aria-hidden="true">${esc(p.nama.charAt(0))}</i>${p.foto ? `<img data-img="${esc(p.foto)}" alt="Foto ${esc(p.nama)}">` : ""}</div><div class="pname"><b>${esc(p.nama)}</b><span class="prole">${esc(p.peran)}</span><span class="prec">Dipakai tiap hari</span></div></div><div class="pbody"><blockquote class="quote">${esc(p.kutipan)}</blockquote><div class="ptags">${(p.pakai || []).map(t => `<span>${esc(t)}</span>`).join("")}</div></div></figure>`).join("");
 
 /* isi paket */
 $("[data-offer]").innerHTML = CONFIG.penawaran.map(o => `<div class="orow"><span class="oico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${ICON[o.ikon] || ICON.box}</svg></span><div><span class="otag ${o.tag === "Bonus" ? "bonus" : ""}">${o.tag}</span><div class="otop"><h3>${o.judul}</h3><span class="oval">Nilai <b>${rp(o.nilai)}</b></span></div><p>${o.manfaat}</p></div></div>`).join("");
@@ -815,7 +846,7 @@ const form = $("[data-order]");
 const goTo = id => { const el = document.getElementById(id); if (el) el.scrollIntoView({behavior: smooth, block: "start"}); };
 const toForm = () => { goTo("ups-order"); lacakATC(); setTimeout(() => { const f = form && form.elements.name; if (f && !f.value) f.focus({preventScroll: true}); }, reduce ? 50 : 700); };
 function act(e){
-  const b = e.target.closest("[data-buy],[data-fab]"); if (b) { e.preventDefault(); toForm(); return; }
+  const b = e.target.closest("[data-buy]"); if (b) { e.preventDefault(); if (b.closest("[data-vpop]")) tutupVideo(true); toForm(); return; }
   const g = e.target.closest('a[href^="#"]');
   if (g && !(g.hasAttribute("data-wa") && CONFIG.wa)) { const id = g.getAttribute("href").slice(1); if (id) { e.preventDefault(); goTo(id); } }
 }
@@ -839,17 +870,33 @@ if (io) {
   }), {rootMargin: "80px", threshold: 0.25});
   vids.forEach(v => obs.observe(v));
 } else vids.forEach(v => { if ("auto" in v.dataset) isi(v); });
-/* tombol suara: browser melarang autoplay bersuara, jadi suara menyala setelah diketuk; hanya satu video bersuara */
-const senyap = b => { b.setAttribute("aria-pressed", "false"); b.querySelector("i").textContent = "🔇"; const v = $("video", b.closest(".tile")); if (v) v.muted = true; };
+/* popup video (acuan motionformat.com): klip contoh diketuk → tampil besar dengan suara + tombol beli */
+const vpop = $("[data-vpop]"), vpv = $("video", vpop);
+let vpAsal = null, vpFokus = null;
+function bukaVideo(tile){
+  const v = $("video", tile); if (!v || !v.dataset.src) return;
+  const item = tile.closest(".gitem"), nama = item ? $(".gname b", item) : null, ket = item ? $(".gname small", item) : null;
+  vpAsal = v; vpFokus = document.activeElement; v.pause();
+  $('[data-vp="nama"]', vpop).textContent = nama ? nama.textContent : "";
+  $('[data-vp="ket"]', vpop).textContent = ket ? ket.textContent : "";
+  vpv.poster = M(v.dataset.poster); vpv.src = M(v.dataset.src); vpv.muted = false;
+  vpop.hidden = false; document.documentElement.classList.add("vpop-on");
+  vpv.play().catch(() => { vpv.muted = true; vpv.play().catch(()=>{}); });
+  $("[data-vpx]", vpop).focus({preventScroll: true});
+}
+function tutupVideo(tanpaFokus){
+  if (vpop.hidden) return;
+  vpv.pause(); vpv.removeAttribute("src"); vpv.load();
+  vpop.hidden = true; document.documentElement.classList.remove("vpop-on");
+  if (vpAsal && "auto" in vpAsal.dataset && !reduce) vpAsal.play().catch(()=>{});
+  if (!tanpaFokus && vpFokus && vpFokus.focus) vpFokus.focus({preventScroll: true});
+  vpAsal = null;
+}
 ROOT.addEventListener("click", e => {
-  const b = e.target.closest("[data-snd]"); if (!b) return;
-  const v = $("video", b.closest(".tile")); if (!v) return;
-  const nyala = b.getAttribute("aria-pressed") !== "true";
-  $$("[data-snd]").forEach(o => { if (o !== b) senyap(o); });
-  if (!nyala) { senyap(b); return; }
-  b.setAttribute("aria-pressed", "true"); b.querySelector("i").textContent = "🔊";
-  isi(v); v.muted = false; try { v.currentTime = 0; } catch (_) {} v.play().catch(()=>{});
+  if (e.target.closest("[data-vpx]") || e.target === vpop) { tutupVideo(); return; }
+  const t = e.target.closest(".gitem .tile"); if (t) { e.preventDefault(); bukaVideo(t); }
 });
+document.addEventListener("keydown", e => { if (e.key === "Escape") tutupVideo(); });
 
 /* demo alur: mentah → arahan → Claude ngedit → render → siap posting (jalan sendiri saat terlihat, berulang) */
 const demo = $("[data-demo]"), dv = $("video", demo), dtag = $("[data-tag]", demo), dsteps = $$("[data-s]", demo);
@@ -869,26 +916,33 @@ if (io && !reduce) new IntersectionObserver(es => es.forEach(e => {
 }), {threshold: .35}).observe(demo);
 else { isi(dv); }
 
-/* tombol beli melayang: muncul setelah tombol hero lewat, hilang saat kartu harga / form terlihat */
-const fab = $("[data-fab]"), heroCta = $("[data-herocta]"), pcard = $("[data-pcard]"), orderSec = document.getElementById("ups-order");
+/* bilah beli melayang: muncul setelah tombol hero lewat, hilang saat kartu harga / form terlihat (pola motionformat.com) */
+let sbar = $("[data-sbar]");
+const sbBtn = sbar && $("[data-buy]", sbar), heroCta = $("[data-herocta]"), pcard = $("[data-pcard]"), orderSec = document.getElementById("ups-order");
 let heroIn = true, hargaIn = false, orderIn = false;
-const upd = () => { if (!fab) return; const on = !heroIn && !hargaIn && !orderIn; fab.classList.toggle("show", on); fab.setAttribute("aria-hidden", on ? "false" : "true"); fab.tabIndex = on ? 0 : -1; };
-if (!CONFIG.fab && fab) fab.remove();
+const upd = () => { if (!sbar) return; const on = !heroIn && !hargaIn && !orderIn; sbar.classList.toggle("show", on); sbar.setAttribute("aria-hidden", on ? "false" : "true"); if (sbBtn) sbBtn.tabIndex = on ? 0 : -1; };
+if (!CONFIG.fab && sbar) { sbar.remove(); sbar = null; }
+/* garis merah di tepi atas bilah = posisi baca halaman */
+if (sbar) {
+  let raf = 0;
+  const prog = () => { raf = 0; const h = document.documentElement.scrollHeight - innerHeight; sbar.style.setProperty("--p", h > 0 ? Math.min(1, Math.max(0, scrollY / h)).toFixed(4) : 0); };
+  addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(prog); }, {passive: true}); prog();
+}
 if (io) {
   new IntersectionObserver(es => es.forEach(e => { heroIn = e.isIntersecting || e.boundingClientRect.top > 0; upd(); })).observe(heroCta);
   new IntersectionObserver(es => es.forEach(e => { hargaIn = e.isIntersecting; upd(); })).observe(pcard);
   new IntersectionObserver(es => es.forEach(e => { orderIn = e.isIntersecting; upd(); })).observe(orderSec);
 }
 
-/* popup kiri bawah: fakta produk + pesanan asli (nama disamarkan). Diam saat form terlihat */
+/* popup kiri bawah: pesanan asli (nama disamarkan) + fakta produk kalau CONFIG.popup.info diisi. Diam saat form terlihat */
 const toast = $("[data-toast]"), P = CONFIG.popup || {};
 const samar = n => { const w = String(n || "").trim().split(/\s+/)[0] || "Seseorang"; return w.slice(0, 2) + "*".repeat(Math.min(Math.max(w.length - 2, 3), 5)); };
 const lalu = t => { const d = (Date.now() - new Date(t).getTime()) / 60000; if (!isFinite(d) || d < 0) return ""; if (d < 60) return Math.max(1, Math.round(d)) + " menit lalu"; if (d < 1440) return Math.round(d / 60) + " jam lalu"; return Math.round(d / 1440) + " hari lalu"; };
 let antre = [], ti = 0, tTimer = null, tTutup = false;
 function susun(pesanan){
   const asli = (pesanan || []).filter(o => o && o.nama && o.waktu).sort((a, b) => new Date(b.waktu) - new Date(a.waktu)).slice(0, 12)
-    .map(o => ["🛒", `<b>${esc(samar(o.nama))}</b>${o.kota ? " dari " + esc(o.kota) : ""} membeli <b>${esc(CONFIG.produk.nama)}</b>${o.addon && A.aktif ? " + " + esc(A.nama) : ""}`, lalu(o.waktu)]);
-  const info = [...(P.info || [])]; if (G) info.splice(2, 0, ["🛡️", `<b>${esc(G.judul)}</b>`, esc(G.info)]);
+    .map(o => { const s = samar(o.nama); return [s.charAt(0).toUpperCase(), `<b>${esc(s)}</b>${o.kota ? " dari " + esc(o.kota) : ""}<br>membeli <b>${esc(CONFIG.produk.nama)}</b>${o.addon && A.aktif ? " + " + esc(A.nama) : ""}`, lalu(o.waktu)]; });
+  const info = [...(P.info || [])]; if (G && info.length) info.splice(2, 0, ["🛡️", `<b>${esc(G.judul)}</b>`, esc(G.info)]);
   const out = []; for (let i = 0; i < Math.max(asli.length, info.length); i++) { if (asli[i]) out.push(asli[i]); if (info[i]) out.push(info[i]); }
   antre = out;
 }
@@ -968,7 +1022,8 @@ function cekForm(){
   const em = f.email.value.trim();
   salah("email", /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em) ? "" : "Email belum benar.");
   salah("pay", (!bayar && !$("[data-paywrap]", form).hidden) ? "Pilih metode pembayaran dulu." : "");
-  return ok ? { name: nama, phone: "62" + hp.slice(1), email: em } : null;
+  // Scalev hanya menerima nomor format 08… (temuan dari kode LP motionformat.com yang juga memakai Scalev)
+  return ok ? { name: nama, phone: hp, email: em } : null;
 }
 function keBayar(order){
   const url = order && typeof order.redirectUrl === "string" ? order.redirectUrl.trim() : "";
@@ -993,6 +1048,7 @@ form.addEventListener("submit", async e => {
   if (!vUtama) { msg("Produk belum tersambung ke toko. Hubungi kami ya.", "bad"); return; }
   const btn = O("kirim"); sedang = true; btn.disabled = true; O("ktext").textContent = "Memproses…";
   try {
+    try { if (S.prefill && S.prefill.save) Promise.resolve(S.prefill.save({ customer: c }, { source: "checkout_form" })).catch(() => {}); } catch (_) {}
     const payload = { customer: c, items: itemList(), paymentMethod: bayar };
     const utm = new URLSearchParams(location.search).get("utm_source"); if (utm) payload.utmSource = utm;
     const order = await S.checkout.createOrder(payload);
@@ -1022,6 +1078,13 @@ function mulaiForm(){
     if (vAddon && vAddon.price > 0) hAddon = vAddon.price;
     if (vUtama && hUtama !== CONFIG.hargaJual) console.warn("[Ghost Editor] harga di Scalev", hUtama, "≠ CONFIG.hargaJual", CONFIG.hargaJual);
     if (A.aktif && !vAddon) { const b = $("[data-bump]", form); if (b) b.remove(); console.warn("[Ghost Editor] produk add-on tidak ditemukan di toko:", A.nama); }
+    /* isi otomatis nama/HP/email dari kunjungan sebelumnya (cookie Scalev), hanya kolom yang masih kosong */
+    try {
+      if (S.prefill && S.prefill.get) Promise.resolve(S.prefill.get()).then(p => {
+        const c = (p && p.customer) || {};
+        ["name", "phone", "email"].forEach(k => { const el = form.elements[k]; if (c[k] && el && !el.value) el.value = c[k]; });
+      }).catch(() => {});
+    } catch (_) {}
   }
   O("pharga").textContent = rb(hUtama); O("sharga").textContent = rp(hUtama);
   if (O("aharga")) O("aharga").textContent = rb(hAddon); O("sadd").textContent = rp(hAddon);
